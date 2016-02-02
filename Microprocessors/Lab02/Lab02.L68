@@ -1,0 +1,45 @@
+00001010 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.15.04
+Created On: 1/28/2016 18:12:00
+
+00000000                             1  *---------------------------------------------------------------------------------------
+00000000                             2  * Program Number: EEE3231 Experiment 2
+00000000                             3  * Description : Introduction to Advanced Debug Features (Bubble Sort)
+00000000                             4  * Written by : <Your name here>
+00000000                             5  * Date : <Today's date here>
+00000000                             6  *---------------------------------------------------------------------------------------
+00000000                             7  * Constant Definitions
+00000000  =00000010                  8  NUMVALS equ 16                  ; Number of values to be sorted
+00000000  =0000000E                  9  INITCNT equ NUMVALS-2           ; Initial value of countdown
+00000000                            10  * Data Definitions
+00001000                            11              org $1000           ; Starting address
+00001000= FE 34 0F CA 09 AB ...     12  vubSort dc.b 254,52,15,202,9,171,37,186,63,190,86,141,186,8,141,1
+00001010                            13                                  ; Unsigned byte vector to be sorted
+00001010                            14  * Program Code
+00001010  303C 000E                 15  BubSort     move.w #INITCNT,d0  ; Sweep Loop countdown
+00001014  41F8 1000                 16  SweepLp     lea vubSort,a0      ; Running pointer: beginning of vector
+00001018  3200                      17              move.w d0,d1        ; Swap Loop countdown
+0000101A  1418                      18  SwapLp      move.b (a0)+,d2     ; Fetch element & move pointer
+0000101C  B410                      19              cmp.b (a0),d2       ; Compare elements
+0000101E  6300 0008                 20              bls NoSwap          ; Preceding <= current: no swap!
+00001022  1150 FFFF                 21              move.b (a0),-1(a0)  ; Bump current element 1 position down
+00001026  1082                      22              move.b d2,(a0)      ; Preceding elt. to current position
+00001028  51C9 FFF0                 23  NoSwap      dbf d1,SwapLp       ; Next Swap Loop iteration
+0000102C  51C8 FFE6                 24              dbf d0,SweepLp      ; Next Sweep Loop iteration
+00001030  4E72 2700                 25              stop #$2700         ; Terminate program (simpler version)
+00001034                            26      end     BubSort             ; Start execution at label "BubSort" 
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+BUBSORT             1010
+INITCNT             E
+NOSWAP              1028
+NUMVALS             10
+SWAPLP              101A
+SWEEPLP             1014
+VUBSORT             1000
