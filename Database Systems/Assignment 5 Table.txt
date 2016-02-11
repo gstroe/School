@@ -1,0 +1,13 @@
+Sailor Number	Sailor Name		Ship Number	Country	Job Title	Ship Number	Ship Name	Year Built	Weight
+16490	Prashant	Kumar	5	India	Navigator	5	Sea Joy 	1999	80000
+536	John	Smith	9	USA	Purser	9	Ocean IV	2003	75000
+18535	Alan	Jones	9	UK	Cruise Director	9	Ocean IV	2003	75000
+27941	Alain	DuMont	9	France	Captain	9	Ocean IV	2003	75000
+28184	Susan	Moore	9	Canada	Wine Steward	9	Ocean IV	2003	75000
+732	Ling	Chang	12	China	Engineer	12	Prince Al	2004	90000
+20254	Jane	Adams	12	USA	Captain	12	Prince Al	2004	90000
+31775	James	Collins	12	USA	Waiter	12	Prince Al	2004	90000
+32856	Sarah	McLachlan	12	Ireland	Cabin Steward	12	Prince Al	2004	90000
+6988	Maria	Gonzalez	20	Mexico	Purser	20	Queen Shirley	1999	80000
+23981	Rene	Lopez	20	Philippines	Captain	20	Queen Shirley	1999	80000
+27467	Fred	Jones	20	UK	Waiter	20	Queen Shirley	1999	80000
