@@ -1,0 +1,40 @@
+00003000 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.15.04
+Created On: 2/11/2016 20:07:23
+
+00000000                             1  *-----------------------------------------------------------
+00000000                             2  * Title      : Lab 4
+00000000                             3  * Written by : Mostapha Baydoun - Gabe Stroe
+00000000                             4  * Date       : 2/11/2016
+00000000                             5  * Description: 
+00000000                             6  * Cycles     : 738 
+00000000                             7  *-----------------------------------------------------------
+00003000                             8          ORG    $3000
+00003000                             9  START:                  ; first instruction of program
+00003000  41F9 00001000             10          LEA     TBL1,A0
+00003006  43F9 00001080             11          LEA     TBL2,A1
+0000300C  323C 000F                 12          MOVE.W  #15,D1
+00003010                            13  * Put program code here
+00003010  22D8                      14  LOOP    MOVE.L  (A0)+,(A1)+
+00003012  B2BC 00000000             15          CMP.L   #0,D1
+00003018  5FC9 FFF6                 16          DBLE    D1,LOOP
+0000301C  FFFF FFFF                 17          SIMHALT             ; halt simulator
+00003020                            18  
+00003020                            19  * Put variables and constants here
+00001000                            20          ORG     $1000
+00001000= 45 76 65 72 79 74 ...     21  TBL1    DC.B    'Everything should be made as simple as possible, but not simpler. (Albert Einstein)',0
+00001080                            22          ORG     $1080
+00001080= 00 00 00 00 00 00 ...     23  TBL2    DCB.B   64,0   
+000010C0                            24          END    START        ; last line of source
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+LOOP                3010
+START               3000
+TBL1                1000
+TBL2                1080

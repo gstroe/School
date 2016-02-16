@@ -1,0 +1,38 @@
+00001010 Starting Address
+Assembler used: EASy68K Editor/Assembler v5.15.04
+Created On: 2/4/2016 18:22:12
+
+00000000                             1  *---------------------------------------------------------------------------------------
+00000000                             2  * Program Number: EEE3231 Experiment 3
+00000000                             3  * Description : Understanding the Addressing Modes
+00000000                             4  * Written by : <Your name here>
+00000000                             5  * Date : <Today's date here>
+00000000                             6  *---------------------------------------------------------------------------------------
+00000000                             7  * Data Definitions
+00001000                             8      org $1000
+00001000= 00 01 02 03 04 05 ...      9      dc.b 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+00001010                            10  * Program Code
+00001010                            11  Start 
+00001010  70FE                      12      moveq   #-2,d0
+00001012  207C 00001000             13      movea.l #$1000,a0
+00001018  223C FFFF0003             14      move.l  #-65533,d1
+0000101E  D0C1                      15      adda.w  d1,a0
+00001020  1418                      16      move.b  (a0)+,d2
+00001022  D002                      17      add.b   d2,d0
+00001024  2180 1005                 18      move.l  d0,5(a0,d1.w)
+00001028  3400                      19      move.w  d0,d2
+0000102A  9082                      20      sub.l   d2,d0
+0000102C  4478 1006                 21      neg.w   $1006
+00001030  2102                      22      move.l  d2,-(a0)
+00001032  4E72 2700                 23      stop    #$2700
+00001036                            24      
+00001036                            25      end     Start 
+
+No errors detected
+No warnings generated
+
+
+SYMBOL TABLE INFORMATION
+Symbol-name         Value
+-------------------------
+START               1010
