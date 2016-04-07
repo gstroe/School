@@ -1,0 +1,13 @@
+00536 John Smith 009 USA Purser
+00732 Ling Chang 012 China Engineer
+06988 Maria Gonzalez 020 Mexico Purser
+16490 Prashant Kumar 005 India Navigator
+18535 Alan Jones 009 UK Cruise Director
+20254 Jane Adams 012 USA Captain
+23981 Rene Lopez 020 Philippines Captain
+27467 Fred Jones 020 UK Waiter
+27941 Alain DuMont 009 France Captain
+28184 Susan Moore 009 Canada Wine Steward
+31775 James Collins 012 USA Waiter
+32856 Sarah McLachlan 012 Ireland Cabin Steward
+ 
