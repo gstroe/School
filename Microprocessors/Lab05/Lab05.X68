@@ -4,9 +4,9 @@
 * Date       :
 * Description:
 *-----------------------------------------------------------
-X EQU 10
-Y EQU 10
-Z EQU 10
+X EQU $950
+Y EQU $954
+Z EQU $958
     
     
 *   Variables
@@ -20,6 +20,8 @@ Z EQU 10
     ds.l    1   ; 1004 Storage for g
     ds.l    1   ; 1008 Storage for h
     
+    ORG     $1300
+    DC.B    '',0
     ORG     $1400
     DC.B    'PLEASE ENTER X: ',0
     ORG     $1500
@@ -37,51 +39,106 @@ Z EQU 10
 START:                  ; first instruction of program
 * Program Starts below
     
-    *PROMPT USER
+    *PROMPT USER FOR X
     MOVE.B  #14,D0
     MOVEA   #$1400,A1
     TRAP    #15
-    
-    
+    MOVE.B  #4,D0             
+    TRAP    #15
+    MOVE.L  D1, $950
+
+    *PROMPT USER FOR Y
+    MOVE.B  #14,D0
+    MOVEA   #$1500,A1
+    TRAP    #15
+    MOVE.B  #4,D0             
+    TRAP    #15
+    MOVE.L  D1, $954
+
+    *PROMPT USER FOR Z
+    MOVE.B  #14,D0
+    MOVEA   #$1600,A1
+    TRAP    #15
+    MOVE.B  #4,D0             
+    TRAP    #15
+    MOVE.L  D1, $958    
     
     * Math stuff
     * FOR F
-    MOVE.W  #X,D7 
-    MULS    #Z,D7
+    MOVE.L  X,D7
+    MOVE.L  Z,D4
+    MOVE.L  Y,D5 
+    MULS    D4,D7
     DIVS    #3,D7
     AND.L   #$0000FFFF,D7
     MOVE.L  #100,D6
-    MULS    #Y,D6
-    MULS    #Z,D6
+    MULS    D5,D6
+    MULS    D4,D6
     SUB.L   D6,D7
     MOVE.L  D7,$1000
     CLR     D7
     CLR     D6
+    CLR     D5
+    CLR     D4
     
     * FOR G
-    MOVE.L  #X,D7
-    DIVS    #3,D7
+    MOVE.L  X,D7
+    MOVE.L  Z,D4
+    MOVE.L  Y,D5 
+    DIVS    #10,D7
     AND.L   #$0000FFFF,D7
-    MOVE.L  #Z,D6
+    MOVE.L  D4,D6
     MULS    #200,D6
     ADD.L   D6,D7
-    DIVS    #Y,D7
+    DIVS    D5,D7
     AND.L   #$0000FFFF,D7
     MOVE.L  D7,$1004
     CLR     D7
     CLR     D6
+    CLR     D5
+    CLR     D4
     
     * FOR H
+    MOVE.L  X,D4
     MOVE.L  $1004,D7
     MULS    #3,D7
     SUB.L   #4,D7
-    MULS    #X,D7
+    MULS    D4,D7
     MOVE.L  D7,$1008
     
+    *PRINT F
+    MOVE.B  #14,D0
+    MOVEA   #$1700,A1
+    TRAP    #15
+    MOVE.B  #3,D0
+    MOVE.L  ($1000),D1
+    TRAP    #15
+    MOVE.B  #13,D0
+    MOVEA   #$1300,A1
+    TRAP    #15
     
-    
-    
-
+    *PRINT G
+    MOVE.B  #14,D0
+    MOVEA   #$1800,A1
+    TRAP    #15
+    MOVE.B  #3,D0
+    MOVE.L  ($1004),D1
+    TRAP    #15
+    MOVE.B  #13,D0
+    MOVEA   #$1300,A1
+    TRAP    #15
+        
+    *PRINT H
+    MOVE.B  #14,D0
+    MOVEA   #$1900,A1
+    TRAP    #15
+    MOVE.B  #3,D0
+    MOVE.L  ($1008),D1
+    TRAP    #15
+    MOVE.B  #13,D0
+    MOVEA   #$1300,A1
+    TRAP    #15
+   
 
 * Put program code here
 
@@ -90,6 +147,7 @@ START:                  ; first instruction of program
 * Put variables and constants here
 
     END    START        ; last line of source
+
 
 
 *~Font name~Courier New~

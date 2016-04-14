@@ -1,6 +1,6 @@
 00002000 Starting Address
 Assembler used: EASy68K Editor/Assembler v5.15.04
-Created On: 2/25/2016 20:46:25
+Created On: 3/3/2016 20:21:54
 
 00000000                             1  *-----------------------------------------------------------
 00000000                             2  * Title      :
@@ -8,9 +8,9 @@ Created On: 2/25/2016 20:46:25
 00000000                             4  * Date       :
 00000000                             5  * Description:
 00000000                             6  *-----------------------------------------------------------
-00000000  =0000000A                  7  X EQU 10
-00000000  =0000000A                  8  Y EQU 10
-00000000  =0000000A                  9  Z EQU 10
+00000000  =00000950                  7  X EQU $950
+00000000  =00000954                  8  Y EQU $954
+00000000  =00000958                  9  Z EQU $958
 00000000                            10      
 00000000                            11      
 00000000                            12  *   Variables
@@ -24,76 +24,133 @@ Created On: 2/25/2016 20:46:25
 00001004                            20      ds.l    1   ; 1004 Storage for g
 00001008                            21      ds.l    1   ; 1008 Storage for h
 0000100C                            22      
-00001400                            23      ORG     $1400
-00001400= 50 4C 45 41 53 45 ...     24      DC.B    'PLEASE ENTER X: ',0
-00001500                            25      ORG     $1500
-00001500= 50 4C 45 41 53 45 ...     26      DC.B    'PLEASE ENTER Y: ',0
-00001600                            27      ORG     $1600
-00001600= 50 4C 45 41 53 45 ...     28      DC.B    'PLEASE ENTER Z: ',0
-00001700                            29      ORG     $1700
-00001700= 54 48 45 20 56 41 ...     30      DC.B    'THE VALUE OF F = ',0
-00001800                            31      ORG     $1800
-00001800= 54 48 45 20 56 41 ...     32      DC.B    'THE VALUE OF G = ',0
-00001900                            33      ORG     $1900
-00001900= 54 48 45 20 56 41 ...     34      DC.B    'THE VALUE OF H = ',0
-00001912                            35      
-00002000                            36      org     $2000
-00002000                            37  START:                  ; first instruction of program
-00002000                            38  * Program Starts below
-00002000                            39      
-00002000                            40      *PROMPT USER
-00002000  103C 000E                 41      MOVE.B  #14,D0
-00002004  327C 1400                 42      MOVEA   #$1400,A1
-00002008  4E4F                      43      TRAP    #15
-0000200A                            44      
-0000200A                            45      
-0000200A                            46      
-0000200A                            47      * Math stuff
-0000200A                            48      * FOR F
-0000200A  3E3C 000A                 49      MOVE.W  #X,D7 
-0000200E  CFFC 000A                 50      MULS    #Z,D7
-00002012  8FFC 0003                 51      DIVS    #3,D7
-00002016  CEBC 0000FFFF             52      AND.L   #$0000FFFF,D7
-0000201C  7C64                      53      MOVE.L  #100,D6
-0000201E  CDFC 000A                 54      MULS    #Y,D6
-00002022  CDFC 000A                 55      MULS    #Z,D6
-00002026  9E86                      56      SUB.L   D6,D7
-00002028  21C7 1000                 57      MOVE.L  D7,$1000
-0000202C  4247                      58      CLR     D7
-0000202E  4246                      59      CLR     D6
-00002030                            60      
-00002030                            61      * FOR G
-00002030  7E0A                      62      MOVE.L  #X,D7
-00002032  8FFC 0003                 63      DIVS    #3,D7
-00002036  CEBC 0000FFFF             64      AND.L   #$0000FFFF,D7
-0000203C  7C0A                      65      MOVE.L  #Z,D6
-0000203E  CDFC 00C8                 66      MULS    #200,D6
-00002042  DE86                      67      ADD.L   D6,D7
-00002044  8FFC 000A                 68      DIVS    #Y,D7
-00002048  CEBC 0000FFFF             69      AND.L   #$0000FFFF,D7
-0000204E  21C7 1004                 70      MOVE.L  D7,$1004
-00002052  4247                      71      CLR     D7
-00002054  4246                      72      CLR     D6
-00002056                            73      
-00002056                            74      * FOR H
-00002056  2E38 1004                 75      MOVE.L  $1004,D7
-0000205A  CFFC 0003                 76      MULS    #3,D7
-0000205E  5987                      77      SUB.L   #4,D7
-00002060  CFFC 000A                 78      MULS    #X,D7
-00002064  21C7 1008                 79      MOVE.L  D7,$1008
-00002068                            80      
-00002068                            81      
-00002068                            82      
+00001300                            23      ORG     $1300
+00001300= 00                        24      DC.B    '',0
+00001400                            25      ORG     $1400
+00001400= 50 4C 45 41 53 45 ...     26      DC.B    'PLEASE ENTER X: ',0
+00001500                            27      ORG     $1500
+00001500= 50 4C 45 41 53 45 ...     28      DC.B    'PLEASE ENTER Y: ',0
+00001600                            29      ORG     $1600
+00001600= 50 4C 45 41 53 45 ...     30      DC.B    'PLEASE ENTER Z: ',0
+00001700                            31      ORG     $1700
+00001700= 54 48 45 20 56 41 ...     32      DC.B    'THE VALUE OF F = ',0
+00001800                            33      ORG     $1800
+00001800= 54 48 45 20 56 41 ...     34      DC.B    'THE VALUE OF G = ',0
+00001900                            35      ORG     $1900
+00001900= 54 48 45 20 56 41 ...     36      DC.B    'THE VALUE OF H = ',0
+00001912                            37      
+00002000                            38      org     $2000
+00002000                            39  START:                  ; first instruction of program
+00002000                            40  * Program Starts below
+00002000                            41      
+00002000                            42      *PROMPT USER FOR X
+00002000  103C 000E                 43      MOVE.B  #14,D0
+00002004  327C 1400                 44      MOVEA   #$1400,A1
+00002008  4E4F                      45      TRAP    #15
+0000200A  103C 0004                 46      MOVE.B  #4,D0             
+0000200E  4E4F                      47      TRAP    #15
+00002010  21C1 0950                 48      MOVE.L  D1, $950
+00002014                            49  
+00002014                            50      *PROMPT USER FOR Y
+00002014  103C 000E                 51      MOVE.B  #14,D0
+00002018  327C 1500                 52      MOVEA   #$1500,A1
+0000201C  4E4F                      53      TRAP    #15
+0000201E  103C 0004                 54      MOVE.B  #4,D0             
+00002022  4E4F                      55      TRAP    #15
+00002024  21C1 0954                 56      MOVE.L  D1, $954
+00002028                            57  
+00002028                            58      *PROMPT USER FOR Z
+00002028  103C 000E                 59      MOVE.B  #14,D0
+0000202C  327C 1600                 60      MOVEA   #$1600,A1
+00002030  4E4F                      61      TRAP    #15
+00002032  103C 0004                 62      MOVE.B  #4,D0             
+00002036  4E4F                      63      TRAP    #15
+00002038  21C1 0958                 64      MOVE.L  D1, $958    
+0000203C                            65      
+0000203C                            66      * Math stuff
+0000203C                            67      * FOR F
+0000203C  2E38 0950                 68      MOVE.L  X,D7
+00002040  2838 0958                 69      MOVE.L  Z,D4
+00002044  2A38 0954                 70      MOVE.L  Y,D5 
+00002048  CFC4                      71      MULS    D4,D7
+0000204A  8FFC 0003                 72      DIVS    #3,D7
+0000204E  CEBC 0000FFFF             73      AND.L   #$0000FFFF,D7
+00002054  7C64                      74      MOVE.L  #100,D6
+00002056  CDC5                      75      MULS    D5,D6
+00002058  CDC4                      76      MULS    D4,D6
+0000205A  9E86                      77      SUB.L   D6,D7
+0000205C  21C7 1000                 78      MOVE.L  D7,$1000
+00002060  4247                      79      CLR     D7
+00002062  4246                      80      CLR     D6
+00002064  4245                      81      CLR     D5
+00002066  4244                      82      CLR     D4
 00002068                            83      
-00002068                            84  
-00002068                            85  
-00002068                            86  * Put program code here
-00002068                            87  
-00002068  FFFF FFFF                 88      SIMHALT             ; halt simulator
-0000206C                            89  
-0000206C                            90  * Put variables and constants here
-0000206C                            91  
-0000206C                            92      END    START        ; last line of source
+00002068                            84      * FOR G
+00002068  2E38 0950                 85      MOVE.L  X,D7
+0000206C  2838 0958                 86      MOVE.L  Z,D4
+00002070  2A38 0954                 87      MOVE.L  Y,D5 
+00002074  8FFC 000A                 88      DIVS    #10,D7
+00002078  CEBC 0000FFFF             89      AND.L   #$0000FFFF,D7
+0000207E  2C04                      90      MOVE.L  D4,D6
+00002080  CDFC 00C8                 91      MULS    #200,D6
+00002084  DE86                      92      ADD.L   D6,D7
+00002086  8FC5                      93      DIVS    D5,D7
+00002088  CEBC 0000FFFF             94      AND.L   #$0000FFFF,D7
+0000208E  21C7 1004                 95      MOVE.L  D7,$1004
+00002092  4247                      96      CLR     D7
+00002094  4246                      97      CLR     D6
+00002096  4245                      98      CLR     D5
+00002098  4244                      99      CLR     D4
+0000209A                           100      
+0000209A                           101      * FOR H
+0000209A  2838 0950                102      MOVE.L  X,D4
+0000209E  2E38 1004                103      MOVE.L  $1004,D7
+000020A2  CFFC 0003                104      MULS    #3,D7
+000020A6  5987                     105      SUB.L   #4,D7
+000020A8  CFC4                     106      MULS    D4,D7
+000020AA  21C7 1008                107      MOVE.L  D7,$1008
+000020AE                           108      
+000020AE                           109      *PRINT F
+000020AE  103C 000E                110      MOVE.B  #14,D0
+000020B2  327C 1700                111      MOVEA   #$1700,A1
+000020B6  4E4F                     112      TRAP    #15
+000020B8  103C 0003                113      MOVE.B  #3,D0
+000020BC  2238 1000                114      MOVE.L  ($1000),D1
+000020C0  4E4F                     115      TRAP    #15
+000020C2  103C 000D                116      MOVE.B  #13,D0
+000020C6  327C 1300                117      MOVEA   #$1300,A1
+000020CA  4E4F                     118      TRAP    #15
+000020CC                           119      
+000020CC                           120      *PRINT G
+000020CC  103C 000E                121      MOVE.B  #14,D0
+000020D0  327C 1800                122      MOVEA   #$1800,A1
+000020D4  4E4F                     123      TRAP    #15
+000020D6  103C 0003                124      MOVE.B  #3,D0
+000020DA  2238 1004                125      MOVE.L  ($1004),D1
+000020DE  4E4F                     126      TRAP    #15
+000020E0  103C 000D                127      MOVE.B  #13,D0
+000020E4  327C 1300                128      MOVEA   #$1300,A1
+000020E8  4E4F                     129      TRAP    #15
+000020EA                           130          
+000020EA                           131      *PRINT H
+000020EA  103C 000E                132      MOVE.B  #14,D0
+000020EE  327C 1900                133      MOVEA   #$1900,A1
+000020F2  4E4F                     134      TRAP    #15
+000020F4  103C 0003                135      MOVE.B  #3,D0
+000020F8  2238 1008                136      MOVE.L  ($1008),D1
+000020FC  4E4F                     137      TRAP    #15
+000020FE  103C 000D                138      MOVE.B  #13,D0
+00002102  327C 1300                139      MOVEA   #$1300,A1
+00002106  4E4F                     140      TRAP    #15
+00002108                           141     
+00002108                           142  
+00002108                           143  * Put program code here
+00002108                           144  
+00002108  FFFF FFFF                145      SIMHALT             ; halt simulator
+0000210C                           146  
+0000210C                           147  * Put variables and constants here
+0000210C                           148  
+0000210C                           149      END    START        ; last line of source
 
 No errors detected
 No warnings generated
@@ -103,6 +160,6 @@ SYMBOL TABLE INFORMATION
 Symbol-name         Value
 -------------------------
 START               2000
-X                   A
-Y                   A
-Z                   A
+X                   950
+Y                   954
+Z                   958
