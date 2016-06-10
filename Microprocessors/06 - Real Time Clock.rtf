@@ -1,0 +1,186 @@
+{\rtf1\ansi\ansicpg1252\deff0\dntblnsbdb\viewkind1
+{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fswiss\fcharset0 Arial;}{\f2\fswiss\fcharset0 Arial;}{\f3\fswiss\fcharset0 Arial;}{\f4\fswiss\fcharset0 Arial;}{\f5\fswiss\fcharset0 Arial;}{\f6\fswiss\fcharset0 Arial;}}
+{\colortbl;\red255\green255\blue0;\red0\green0\blue255;\red255\green255\blue255;}
+{\*\listtable{\list\listtemplateid18467\listhybrid
+{\listlevel\levelnfc0\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid6334\'01\0 ;}{\levelnumbers;}\chbrdr\brdrnone\brdrcf1\chshdng0\chcfpat1\chcbpat1 \fi-360\li720\jclisttab\tx720}
+{\listname ;}\listid41}
+{\list\listtemplateid19169\listhybrid
+{\listlevel\levelnfc0\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid15724\'01\0 ;}{\levelnumbers;}\chbrdr\brdrnone\brdrcf1\chshdng0\chcfpat1\chcbpat1 \fi-360\li720\jclisttab\tx720}
+{\listlevel\levelnfc0\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid11478\'01\0 ;}{\levelnumbers;}\chbrdr\brdrnone\brdrcf1\chshdng0\chcfpat1\chcbpat1 \fi-360\li1440\jclisttab\tx1440}
+{\listname ;}\listid26500}
+{\list\listtemplateid26962\listhybrid
+{\listlevel\levelnfc0\levelnfcn23\leveljc0\leveljcn0\levelfollow0\levelstartat1\levelspace360\levelindent0{\leveltext\leveltemplateid24464\'01\0 ;}{\levelnumbers;}\chbrdr\brdrnone\brdrcf1\chshdng0\chcfpat1\chcbpat1 \fi-360\li720\jclisttab\tx720}
+{\listname ;}\listid29358}
+}{\*\listoverridetable
+{\listoverride\listid41\listoverridecount0\ls1}
+{\listoverride\listid26500\listoverridecount0\ls2}
+{\listoverride\listid29358\listoverridecount0\ls3}
+}{\stylesheet{\*\cs0 \additive Default Paragraph Font;}
+}
+\jexpand\pgwsxn12240\pghsxn15840
+{\*\bkmkstart page1}{\*\bkmkend page1}
+\margl1440\margr1440\margt688\margb519\marglsxn1940\margrsxn1440\cols1\colno1\colw8860
+{
+{\pard\plain \sl239\slmult1 \ri0\nooverflow\qr{\f1\fs20 SoC Studio}\par}
+}{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft-500\shptop28\shpright8860\shpbottom28{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5054}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+
+{\pard\sl-200\slmult0\par
+\pard\sl-340\slmult0\par
+
+{\pard\plain \li2780\sl239\slmult1 \ql{\f1\fs20 LAB 06: Real Time Clock Intro}\par}
+}
+{\pard\sl-169\slmult0\par
+
+{\pard\plain \li3780\sl239\slmult1 \ql{\f2\fs18 Abstract}\par}
+}
+{\pard\sl-95\slmult0\par
+
+{\pard\plain \li0\sl238\slmult1 \ri500\nooverflow\qj\fi276 {\f3\fs18 This lab will get you more familiar with using registers and give you a brief insight to using the real time clock hardware. It is an intro to the RTC and does not exhaust all features of it. No using built in functions unless stated}\par}
+}
+{\pard\sl-384\slmult0\par
+
+{\pard\plain \li0\sl239\slmult1 \ql{\f2\fs18 Pre-Lab}\par}
+}
+{\pard\sl-114\slmult0\par
+{{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin500\nooverflow\lin440\itap0 \sl230\slmult1 {\plain\f3\fs18 Read the Real Time Clock (RTC) chapter in the datasheet. You can skip the section about Clock Calibration and Waveform Generation }\par\pard\sl-121\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin500\nooverflow\lin440\itap0 \sl230\slmult1 {\plain\f3\fs18 Read through the register mapping of the RTC and browse through the individual registers. (You are going to be working with these registers so dont skip this step). }\par\pard\sl-92\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin0\nooverflow\lin200\itap0 \sl239\slmult1 {\plain\f3\fs18 Read in the data sheet about the SYS WPMR register }\par\pard\sl-121\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin500\nooverflow\lin440\itap0 \sl230\slmult1 {\plain\f3\fs18 Make a copy of your SoC-Lab05 folder and rename it SoC-Lab06 and edit the le names as you did in the previous labs }\par}
+}{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft3533\shptop-521\shpright3588\shpbottom-521{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5054}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+
+{\pard\sl-308\slmult0\par
+
+{\pard\plain \li0\sl239\slmult1 \ql{\f2\fs18 Steps (check the boxes as you complete them)}\par}
+}
+{\pard\sl-114\slmult0\par
+{{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin500\nooverflow\lin440\itap0 \sl230\slmult1 {\plain\f3\fs18 In main.c, add the following 2 functions to your code, and make appropriate user menu items for them: {setup rtc()} and {print time()} }\par\pard\sl-92\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin0\nooverflow\lin200\itap0 {\plain\f3\fs18 In {setup rtc} do the following and in this order. }\par\pard\sl-120\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin500\nooverflow\lin800\itap0 \sl243\slmult1 {\plain\f3\fs18 Disable write protection of the RTC registers by writing to the System Controller Write Protec-tion Mode Register (SYSC WPMR) register. (Note, the address of the SYSC WPMR register is not speci cally given in the data sheet. However, you can calculate it. Start by looking at table 22-1) }\par\pard\sl-78\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin500\nooverflow\lin800\itap0 \sl230\slmult1 {\plain\f3\fs18 In the mode register, set the clock to 12 hour mode, gregorian calender, no error correction, no output sources. }\par\pard\sl-81\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin500\nooverflow\lin800\itap0 \sl267\slmult1 {\plain\f3\fs18 Enable update of the time and calendar by writing the appropriate values to the control register Wait until the time and calendar registers can by updated by continuously polling the `ac- }\par\pard\sl-58\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin0\nooverflow\lin800\itap0 \sl210\slmult1 {\plain\f3\fs18 knowledge for update bit' in the status register }\par\pard\sl-36\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin4960\nooverflow\lin800\itap0 \sl267\slmult1 {\plain\f3\fs18 Clear the `acknowledge for update bit' Set a valid calendar date. }\par\pard\sl-58\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin0\nooverflow\lin580\itap0 \sl206\slmult1 {\plain\f3\fs18 Set a valid clock time }\par\pard\sl-81\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin0\nooverflow\lin800\itap0 \sl210\slmult1 {\plain\f3\fs18 (*Note: The date and time both require binary coded decimal (BCD) formats. ) }\par\pard\sl-36\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin500\nooverflow\lin800\itap0 \sl230\slmult1 {\plain\f3\fs18 Check to ensure that your clock and calendar times are valid by checking the RTC Valid Entry Register }\par\pard\sl-81\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin2220\nooverflow\lin800\itap0 \sl267\slmult1 {\plain\f3\fs18 Recon gure the control register to start the calendar and clock counting Enable write protection in the SYSC WPMR register }\par\pard\sl-97\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin500\nooverflow\lin440\itap0 \sl230\slmult1 {\plain\f3\fs18 It would be a good idea at this point to make sure that the values you think you are storing in the calendar and time registers are actually being stored the way you think they are }\par\pard\sl-92\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin0\nooverflow\lin200\itap0 {\plain\f3\fs18 Fill in code in the {print time()} function to print the time. }\par}
+}{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft1404\shptop-5284\shpright1461\shpbottom-5284{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5054}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft2724\shptop-5284\shpright2781\shpbottom-5284{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5054}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft1092\shptop-4985\shpright1148\shpbottom-4985{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5054}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft2966\shptop-4467\shpright3021\shpbottom-4467{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5054}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft7034\shptop-4467\shpright7089\shpbottom-4467{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5054}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft3798\shptop-821\shpright3853\shpbottom-821{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5054}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft2348\shptop-4\shpright2404\shpbottom-4{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5054}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+
+{\pard\sl-307\slmult0\par
+
+{\pard\plain \li0\ql{\f2\fs18 For Credit}\par}
+}
+{\pard\sl-84\slmult0\par
+{{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin0\nooverflow\lin200\itap0 {\plain\f3\fs18 Make sure your code runs and there are no bugs in it. }\par\pard\sl-120\slmult0\par
+{\listtext\tab}\pard\qj\nowidctlpar\jclisttab\faauto\rin1720\nooverflow\lin440\itap0 \sl313\slmult1 {\plain\f3\fs18 Load the code onto the board and set it up in debug mode. Call the professor over Answer his questions }\par}
+}{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft5997\shptop341\shpright5997\shpbottom1789{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5060}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft5993\shptop345\shpright8881\shpbottom345{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5060}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft8877\shptop341\shpright8877\shpbottom1789{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5060}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft5993\shptop1785\shpright8881\shpbottom1785{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5060}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+{\shp{\*\shpinst\shpfhdr0\shpbxcolumn\shpbypara\shpwr3\shpfblwtxt1\shpz1\shpleft-500\shptop1855\shpright1886\shpbottom1855{\sp{\sn shapeType}{\sv 20}}
+{\sp{\sn fBehindDocument}{\sv 1}}
+{\sp{\sn fFlipH}{\sv 0}}
+{\sp{\sn fFlipV}{\sv 0}}
+{\sp{\sn lineWidth}{\sv 5054}}
+{\sp{\sn lineColor}{\sv 0}}
+{\sp{\sn lineDashing}{\sv 0}}}}
+\sect\sbknone
+\marglsxn1440\margrsxn1440\cols1\colno1\colw9360
+{\pard\sl-200\slmult0\par
+\pard\sl-200\slmult0\par
+\pard\sl-200\slmult0\par
+\pard\sl-200\slmult0\par
+\pard\sl-200\slmult0\par
+\pard\sl-200\slmult0\par
+\pard\sl-200\slmult0\par
+\pard\sl-200\slmult0\par
+\pard\sl-238\slmult0\par
+
+{\pard\plain \li0\sl239\slmult1 \ql{\f1\fs20 |||- Your Name|||-}\tx6620\tab{\f1\fs20 |||- Approved Date|||-}\par}
+}}
