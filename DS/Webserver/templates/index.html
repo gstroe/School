@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://www.w3schools.com/appml/2.0.3/appml.js"></script>
+
+
+<script>
+var interval = 100;
+function getRequest(){
+  $(document).ready(function(){
+      $("#div1").load("http://127.0.0.1:5000/pull");
+  });
+}
+setInterval(getRequest,interval);
+</script>
+
+<body><div id="div1"><h2>The CPU: </h2></div></body>

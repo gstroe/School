@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 <style>
-
 .chart div {
   font: 10px sans-serif;
   background-color: steelblue;
@@ -10,13 +9,20 @@
   margin: 1px;
   color: white;
 }
-
 </style>
-<div class="chart"></div>
-<script src="http://d3js.org/d3.v3.min.js"></script>
-<script>
 
-var data = [4, 8, 15, 16, 23, 42];
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://www.w3schools.com/appml/2.0.3/appml.js"></script>
+
+<body>
+<div class="chart"></div>
+<button>Get External Content</button>
+
+</body>
+
+<script>
+var data = [4, 8, 11, 16, 23, 42]; 
 
 var x = d3.scale.linear()
     .domain([0, d3.max(data)])
@@ -29,4 +35,11 @@ d3.select(".chart")
     .style("width", function(d) { return x(d) + "px"; })
     .text(function(d) { return d; });
 
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#div1").load("http://127.0.0.1:5000");
+    });
+});
 </script>
+
+<body><div id="div1"><h2>Let jQuery AJAX Change This Text</h2></div></body>
