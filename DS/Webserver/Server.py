@@ -1,5 +1,5 @@
 # Headers
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, jsonify 
 import random
 import json
 app = Flask(__name__) # The referce for flask to be the application that runs in this file
@@ -22,45 +22,45 @@ global lastRead
 lastRead = ""
 
 @app.route('/') # the base route to load the index file for the web application
-def index():
+def index(): # this is the function that the route points to. It could be named anything but of course has to be unique
     return render_template('index.html') # "Load the index file directory"
 
 	
-@app.route('/data') # the pulling route so flash can redirect the directories
-def data():
-	global lastRead
+@app.route('/data') # the pulling route so flash can redirect the directories, this one pulls the binary data and checks if any of the filters need to be applied
+def data(): 
+	global lastRead # load the lastread file to see if it is the same
 	canFile = open("can.txt") # open the canbus file and read from it	
-	read = canFile.read() #copy
+	read = canFile.read() # copy the data
 	readJson = json.loads(read) # load as JSOn so python can understand
 	
 	#Checks
-	if (chkGD & (lastRead != read)):
+	if (chkGD & (lastRead != read)): # if good filter is enabled and the read is note the same as last time
 		checkGD(readJson[0]['ID'], readJson[0]['ERROR'])
-	if (chkER & (lastRead != read)):
+	if (chkER & (lastRead != read)): # same thing but for errors
 		checkER(readJson[0]['ID'], readJson[0]['ERROR'])
 	if (lastRead != read): # add to filter ID if not last sent
 		checkAddID(readJson[0]['ID'])			
 	if (checkID(readJson[0]['ID'])): # check if its being filter and mark error as two if its is
 		readJson[0]['ERROR'] = 2
 
-	lastRead = read
-	return jsonify(readJson)
+	lastRead = read # set this read with
+	return jsonify(readJson) # jsonify converst a python object into a json file
 
 # returns the filterd IDs
 @app.route('/fID') # returns the filterd IDs
 def fID():
 	return jsonify(dictID)
 
-@app.route('/fER') # returns the filterd IDs
+@app.route('/fER') # returns the filterd errors
 def fER():
 	return jsonify(dictER)
 
-@app.route('/fGD') # returns the filterd IDs
+@app.route('/fGD') # returns the filterd good data
 def fGD():
 	return jsonify(dictGD)
 
 # Adds the ID to the list
-@app.route('/addID/<int:ID>') 
+@app.route('/addID/<int:ID>')  # a
 def addID(ID):
 	for x in xrange(0,len(dictID)):
 		if (int(dictID[x]['ID']) == ID):
@@ -179,5 +179,5 @@ def convert(array):
 	return num
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0')
 	
