@@ -1,24 +1,725 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
 
+<!--Headers-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 
-<script>
-var interval = 100;
-function getRequest(){
-  $(document).ready(function(){
-      $("#canHead").load("http://127.0.0.1:5000/head");
-      $("#canTail").load("http://127.0.0.1:5000/tail");
-  });
-}
-setInterval(getRequest,interval);
-</script>
-
 <body>
-  <div id="canHead"><h2> </h2></div> <div id="canTail"><h2> </h2></div>
   <script>
-    var head = d3.select("#canHead")
-    head.append()
+    var datatemp = [{ID:1000, count:4},{ID:1, count:10},{ID:1500, count:10},{ID:2047, count:1},{ID:400, count:6}]
+    
+    // defines the canvase to draw on. Done in pixels
+    var canvas = d3.select("body") 
+                    .append("svg")
+                    .attr("width", 1000)
+                    .attr("height", 200);
+
+    var filterCanvas = d3.select("body")
+                        .append("svg")
+                        .attr("width", 1920)
+                        .attr("height", 500);
+
+    // ~~~~~~~~~~ Filter Groups ~~~~~~~~~~
+    var fgroupID = filterCanvas.append("g")
+                                .attr("transform","translate(960,275)");
+    var fgroupGD = filterCanvas.append("g")
+                                .attr("transform","translate(480,200)");
+    var fgroupER = filterCanvas.append("g")
+                                .attr("transform","translate(1440,200)");
+    buttonID = fgroupID.append("circle")
+                        .attr("r", 50)
+                        .attr("fill","white")
+                        .attr("stroke", "dimgray")
+                        .attr("stroke-width", 2)
+                        .on("mouseover", highlightID)
+                        .on("mouseout", dehighlightID)
+                        .on("click", clearID);
+
+    buttonGD = fgroupGD.append("circle")
+                        .attr("r", 50)
+                        .attr("fill","SteelBlue")
+                        .attr("stroke", "dimgray")
+                        .attr("stroke-width", 2)
+                        .on("mouseover", highlightGD)
+                        .on("mouseout", dehighlightGD)
+                        .on("click", toggleGD);
+
+    buttonER = fgroupER.append("circle")
+                        .attr("r", 50)
+                        .attr("fill","Crimson")
+                        .attr("stroke", "dimgray")
+                        .attr("stroke-width", 2)
+                        .on("mouseover", highlightER)
+                        .on("mouseout", dehighlightER)
+                        .on("click", toggleER);
+
+    var innerArc = d3.svg.arc()
+                .innerRadius(60)
+                .outerRadius(100);
+    var midArc = d3.svg.arc()
+                .innerRadius(100)
+                .outerRadius(175);
+    var outerArc = d3.svg.arc()
+                .innerRadius(150)
+                .outerRadius(200);
+
+
+    // Color Scales
+    var scaleID = d3.scale.linear()
+                    .domain([0,2047])
+                    .range(["HoneyDew","DarkGreen"]);
+    var scaleGD = d3.scale.linear()
+                    .domain([0,2047])
+                    .range(["Azure","SteelBlue"]);
+    var scaleER = d3.scale.linear()
+                    .domain([0,2047])
+                    .range(["SeaShell","Crimson"]);
+                
+
+    var pieID = d3.layout.pie()
+                  .value(function (d) { return d.count; });
+
+    
+
+    // checks the current status on the circles
+    var ErrorFilter = false;
+    var GoodFilter = false;
+
+
+    var p = Math.PI * p; // math for arcs
+
+
+    var errorBox = canvas.append("rect")
+                          .attr("height", 90)
+                          .attr("fill", "white")
+                          .attr("opacity", 0.00);
+
+    var errorData = { ERROR:0 }
+
+    var busy = false;
+
+    // Data arrays declarations
+    var dataSOF = [];
+    var dataID = [];
+    var dataRR = [];
+    var dataConR = [];
+    var dataDL = [];
+    var dataData = [];
+    var dataCRC = [];
+    var dataDeli = [];
+    var dataEOF = [];
+
+    var leftSOF = { value:0 };
+    var leftID = { value:0 };
+    var leftRR = { value:0 };
+    var leftConR = { value:0 };
+    var leftDL = { value:0 };
+    var leftData = { value:0 };
+    var leftCRC = { value:0 };
+    var leftDeli = { value:0 };
+    var leftEOF = { value:0 };
+    var leftIFS = { value:0 };
+
+    // frame boxes declarations
+    var frameSOF = canvas.append("rect")
+                          .attr("transform", "translate(10,10)")
+                          .attr("height", 70)
+                          .attr("fill", "Gray")
+                          .attr("opacity", 0.15)
+                          .on("mouseover", SOFMouseOver)
+                          .on("mouseout", SOFMouseOut);
+    var frameID = canvas.append("rect")
+                          .attr("transform", "translate(10,10)")
+                          .attr("height", 70)
+                          .attr("fill", "DarkGreen")
+                          .attr("opacity", 0.15)
+                          .on("click", IDMouseClick)
+                          .on("mouseover", IDMouseOver)
+                          .on("mouseout", IDMouseOut);
+    var frameRR = canvas.append("rect")
+                          .attr("transform", "translate(10,10)")
+                          .attr("height", 70)
+                          .attr("fill", "Turquoise")
+                          .attr("opacity", 0.15)
+                          .on("mouseover", RRMouseOver)
+                          .on("mouseout", RRMouseOut);
+    var frameConR = canvas.append("rect")
+                          .attr("transform", "translate(10,10)")
+                          .attr("height", 70)
+                          .attr("fill", "Grey")
+                          .attr("opacity", 0.15)
+                          .on("mouseover", ConRMouseOver)
+                          .on("mouseout", ConRMouseOut);
+    var frameDL = canvas.append("rect")
+                          .attr("transform", "translate(10,10)")
+                          .attr("height", 70)
+                          .attr("fill", "Gold")
+                          .attr("opacity", 0.15)
+                          .on("mouseover", DLMouseOver)
+                          .on("mouseout", DLMouseOut);
+    var frameData = canvas.append("rect")
+                          .attr("transform", "translate(10,10)")
+                          .attr("height", 70)
+                          .attr("fill", "SteelBlue")
+                          .attr("opacity", 0.15)
+                          .on("mouseover", DataMouseOver)
+                          .on("mouseout", DataMouseOut);                          
+    var frameCRC = canvas.append("rect")
+                          .attr("transform", "translate(10,10)")
+                          .attr("height", 70)
+                          .attr("fill", "Salmon")
+                          .attr("opacity", 0.15)
+                          .on("mouseover", CRCMouseOver)
+                          .on("mouseout", CRCMouseOut);
+    var frameDeli = canvas.append("rect")
+                          .attr("transform", "translate(10,10)")
+                          .attr("height", 70)
+                          .attr("fill", "Grey")
+                          .attr("opacity", 0.15)
+                          .on("mouseover", DeliMouseOver)
+                          .on("mouseout", DeliMouseOut); 
+    var frameEOF = canvas.append("rect")
+                          .attr("transform", "translate(10,10)")
+                          .attr("height", 70)
+                          .attr("fill", "Grey")
+                          .attr("opacity", 0.15)
+                          .on("mouseover", EOFMouseOver)
+                          .on("mouseout", EOFMouseOut); 
+    var frameIFS = canvas.append("rect")
+                          .attr("transform", "translate(10,10)")
+                          .attr("height", 70)
+                          .attr("fill", "Grey")
+                          .attr("opacity", 0.15)
+                          .on("mouseover", IFSMouseOver)
+                          .on("mouseout", IFSMouseOut);                      
+
+
+    // Groups
+    var SOF = canvas.append("g")
+                      .on("mouseover", SOFMouseOver)
+                      .on("mouseout", SOFMouseOut);                   
+    var ID = canvas.append("g")
+                      .on("click", IDMouseClick)
+                      .on("mouseover", IDMouseOver)
+                      .on("mouseout", IDMouseOut);
+    var RR = canvas.append("g")
+                    .on("mouseover", RRMouseOver)
+                    .on("mouseout", RRMouseOut);
+    var ConR = canvas.append("g")
+                    .on("mouseover", ConRMouseOver)
+                    .on("mouseout", ConRMouseOut);
+    var DL = canvas.append("g")
+                    .on("mouseover", DLMouseOver)
+                    .on("mouseout", DLMouseOut);
+    var Data = canvas.append("g")
+                    .on("mouseover", DataMouseOver)
+                    .on("mouseout", DataMouseOut);
+    var CRC = canvas.append("g")
+                    .on("mouseover", CRCMouseOver)
+                    .on("mouseout", CRCMouseOut);
+    var Deli = canvas.append("g")
+                    .on("mouseover", DeliMouseOver)
+                    .on("mouseout", DeliMouseOut);
+    var EOF = canvas.append("g")
+                    .on("mouseover", EOFMouseOver)
+                    .on("mouseout", EOFMouseOut);
+    var IFS = canvas.append("g")
+                    .on("mouseover", IFSMouseOver)
+                    .on("mouseout", IFSMouseOut);
+
+
+    // ~~~~~~~~~~~~ Data mouse events ~~~~~~~~~~~~~~~
+
+    // all event handler - pass values to real logic function
+    function SOFMouseOver () {
+      handleMouseOver(frameSOF, SOF, dataSOF, "Grey", "SOF");
+    }
+    function SOFMouseOut() {
+      handleMouseOut(frameSOF, SOF);
+    }
+    function IDMouseOver () {
+      handleMouseOver(frameID, ID, dataID, "DarkGreen", "Address ID");
+    }
+    function IDMouseOut() {
+      handleMouseOut(frameID, ID);
+    }
+    function RRMouseOver () {
+      handleMouseOver(frameRR, RR, dataRR, "Turquoise", "Required Remote");
+    }
+    function RRMouseOut() {
+      handleMouseOut(frameRR, RR);
+    }
+    function ConRMouseOver () {
+      handleMouseOver(frameConR, ConR, dataConR, "Grey", "Control Reserved");
+    }
+    function ConRMouseOut() {
+      handleMouseOut(frameConR, ConR);
+    }
+    function DLMouseOver () {
+      handleMouseOver(frameDL, DL, dataDL, "Gold", "Data Length");
+    }
+    function DLMouseOut() {
+      handleMouseOut(frameDL, DL);
+    }
+    function DataMouseOver () {
+      handleMouseOver(frameData, Data, dataData, "SteelBlue", "Data");
+    }
+    function DataMouseOut() {
+      handleMouseOut(frameData, Data);
+    }
+    function CRCMouseOver () {
+      handleMouseOver(frameCRC, CRC, dataCRC, "Salmon", "CRC");
+    }
+    function CRCMouseOut() {
+      handleMouseOut(frameCRC, CRC);
+    }
+    function DeliMouseOver () {
+      handleMouseOver(frameDeli, Deli, dataDeli, "Grey", "Delimiters");
+    }
+    function DeliMouseOut() {
+      handleMouseOut(frameDeli, Deli);
+    }
+    function EOFMouseOver () {
+      handleMouseOver(frameEOF, EOF, dataEOF, "Grey", "End Of File");
+    }
+    function EOFMouseOut() {
+      handleMouseOut(frameEOF, EOF);
+    }
+    function IFSMouseOver () {
+      handleMouseOver(frameIFS, IFS, dataIFS, "Grey", "IFS");
+    }
+    function IFSMouseOut() {
+      handleMouseOut(frameIFS, IFS);
+    }
+    
+    // functions that has logic for mouse events
+    function handleMouseOver(frame, group, data, color, name) {
+      busy = true;
+      frame.attr("opacity", 0.50);
+      
+      if(group.selectAll("text").size() == 0)
+      {
+        group.append("line")
+            .attr("x1", (parseInt(frame.attr("width"))/2 - 10))
+            .attr("y1", (parseInt(frame.attr("height"))/2 - 10) + 35)
+            .attr("x2", (parseInt(frame.attr("width"))/2 - 10))
+            .attr("y2", (parseInt(frame.attr("height"))/2 - 10) + 70)
+            .attr("stroke", color)
+            .attr("stroke-width", 5)
+            .attr("stroke-opacity", 0.50);
+
+        group.append("text")
+            .attr("x", (parseInt(frame.attr("width"))/2 - 10))
+            .attr("y", 120)
+            .attr("text-anchor", "middle")
+            .attr("font-size", "30px")
+            .attr("stroke", color)
+            .attr("stroke-width", 2)
+            .attr("stroke-opacity", 0.25)
+            .text(function() { 
+              var outStr = "";
+
+              for (var i =  data.length - 1; i >= 0; i--) {
+                var num = 0;
+                num += data[i];
+                i--;
+                if (i < 0) { 
+                  outStr = num.toString(16).toUpperCase() + outStr;
+                  break; }
+                
+                num += data[i]*2;
+                i--;
+                if (i < 0) { 
+                  outStr = num.toString(16).toUpperCase() + outStr;
+                  break; }
+                
+                num += data[i]*4;
+                i--;
+                if (i < 0) { 
+                  outStr = num.toString(16).toUpperCase() + outStr;
+                  break; }
+                
+                num += data[i]*8;
+                outStr = num.toString(16).toUpperCase() + outStr;
+              }
+
+              var count = 0;
+              for (var i = outStr.length - 1; i >= 0; i--) {
+                if (count >= 1 && i > 0) {
+                  outStr = [outStr.slice(0,i), ":", outStr.slice(i)].join("");
+                  count = 0;
+                }
+                else {
+                  count++;
+                }
+
+              }
+
+
+              return name + " - " + outStr;
+            });
+
+        if(name == "SOF") {
+          group.selectAll("text").attr("text-anchor", "left");
+        }
+      }
+    } 
+    function handleMouseOut(frame, group) {
+      frame.attr("opacity", 0.15);
+      group.selectAll("text").remove();
+      group.selectAll("line").remove();
+      busy = false;
+    }
+
+
+    // ~~~~~~~~~ID mouse events~~~~~~~~~~
+
+    // Id filter Click
+    function IDMouseClick () { 
+      var num = 0;
+      for (var i =  dataID.length - 1; i >= 0; i--) {
+        num += dataID[i] * Math.pow(2, (dataID.length-1-i)); 
+      }
+      d3.json("/addID/"+num, function (data) {  } ) // add via variable in url
+    }
+    // removes the ID from the filter
+    function IDRemove(data) {     
+      // tell to remove by adding it to the url code
+      d3.json("/remID/"+data.data.ID, function (data) {  } ) 
+    }
+    function highlightID() {
+      var arc = d3.select(this);
+      arc.transition().attr("stroke","DarkGreen").attr("stroke-width", 5);
+    }
+    function dehighlightID() {
+      var arc = d3.select(this);
+      arc.transition().attr("stroke","dimgray").attr("stroke-width", 2);
+    }
+    function clearID(argument) {
+      d3.json("/clearID", function (data) {  } )
+    }
+
+
+
+    // ~~~~~~~~~Good mouse events~~~~~~~~~~
+
+    // Id filter Click
+    // removes the ID from the filter
+    function highlightGD() {
+      var arc = d3.select(this);
+      arc.transition().attr("stroke","SteelBlue").attr("stroke-width", 5);
+    }
+    function dehighlightGD() {
+      var arc = d3.select(this);
+      arc.transition().attr("stroke","dimgray").attr("stroke-width", 2);
+    }
+    function toggleGD(argument) {
+      if (GoodFilter == true) {
+        d3.json("/offGD", function (data) {  } );
+
+        // change the button looks
+        buttonGD.transition().duration(125).attr("fill", "SteelBlue");
+        GoodFilter = false;
+      }
+      else
+      {
+        d3.json("/onGD", function (data) {  } );
+
+        // change the button looks
+        buttonGD.transition().duration(125).attr("fill", "white");
+        GoodFilter = true;
+      }  
+    }
+
+
+
+    // ~~~~~~~~~Error mouse events~~~~~~~~~~
+
+    // Id filter Click
+    // removes the ID from the filter
+    function highlightER() {
+      var arc = d3.select(this);
+      arc.transition().attr("stroke","Crimson").attr("stroke-width", 5);
+    }
+    function dehighlightER() {
+      var arc = d3.select(this);
+      arc.transition().attr("stroke","dimgray").attr("stroke-width", 2);
+    }
+    function toggleER(argument) {
+      if (ErrorFilter == true) {
+        d3.json("/offER", function (data) {  } );
+
+        // change the button looks
+        buttonER.transition().duration(125).attr("fill", "Crimson");
+        ErrorFilter = false;
+      }
+      else
+      {
+        d3.json("/onER", function (data) {  } );
+
+        // change the button looks
+        buttonER.transition().duration(125).attr("fill", "white");
+        ErrorFilter = true;
+      }      
+    }
+
+
+
+    // ~~~~~~~~~~~~~ Timed Events ~~~~~~~~~~~~~~~
+
+    // redraw every data set
+    function redraw () {
+      
+      // get the byte data
+      d3.json("/data", function(data) {
+        if(!busy)
+        {
+          if(!(data[0].ERROR == 2 || (data[0].ERROR == 1 && ErrorFilter == true) || (data[0].ERROR == 0 && GoodFilter == true)))
+          {
+            redrawEffect(frameSOF, SOF, data[0].SOF, "grey", 1, { value:10 }, leftSOF);
+            dataSOF = data[0].SOF;        
+            redrawEffect(frameID, ID, data[0].ID, "DarkGreen", 2, leftSOF, leftID);
+            dataID = data[0].ID;
+            redrawEffect(frameRR, RR, data[0].RR, "Turquoise", 3, leftID, leftRR);
+            dataRR = data[0].RR;
+            redrawEffect(frameConR, ConR, data[0].ConR, "grey", 4, leftRR, leftConR);
+            dataConR = data[0].ConR;
+            redrawEffect(frameDL, DL, data[0].DL, "Gold", 5, leftConR, leftDL);
+            dataDL = data[0].DL;
+            redrawEffect(frameData, Data, data[0].Data, "SteelBlue", 6, leftDL, leftData);
+            dataData = data[0].Data;
+            redrawEffect(frameCRC, CRC, data[0].CRC, "Salmon", 7, leftData, leftCRC);
+            dataCRC = data[0].CRC;
+            redrawEffect(frameDeli, Deli, data[0].Deli, "grey", 8, leftCRC, leftDeli);
+            dataDeli = data[0].Deli;
+            redrawEffect(frameEOF, EOF, data[0].EOF, "grey", 9, leftDeli, leftEOF);
+            dataEOF = data[0].EOF;
+            redrawEffect(frameIFS, IFS, data[0].IFS, "grey", 10, leftEOF, leftIFS);
+            dataIFS = data[0].IFS;
+
+            // update the size of the error box
+            errorBox.attr("width",(20+leftIFS.value));
+            canvas.attr("width",(20+leftIFS.value))
+            errorData.ERROR = data[0].ERROR;
+          }
+        }
+      })
+        
+    }
+
+    function drawID() {
+      // update ID chart
+      d3.json("/fID", function (data) {
+
+        // erase earlier set
+        fgroupID.selectAll("g").remove();
+
+        // creates groups for each set of data
+        var arcsID = fgroupID.selectAll(".arc")
+                              .data(pieID(data))
+                              .enter()
+                              .append("g")
+                              .attr("class","arc");
+
+        // add the arcs and the text
+        arcsID.append("line").attr("x1", function (d) { return innerArc.centroid(d)[0]; })
+                              .attr("y1", function (d) { return innerArc.centroid(d)[1]; })
+                              .attr("x2", function (d) { return midArc.centroid(d)[0]; })
+                              .attr("y2", function (d) { return midArc.centroid(d)[1]; })
+                              .attr("stroke-width", 3)
+                              .attr("stroke", "dimgray");
+        arcsID.append("text").attr("transform", function (d) { return "translate(" + outerArc.centroid(d) + ")" })
+                              .attr("text-anchor", "middle")
+                              .attr("font-size", 20)
+                              .text(function (d) { 
+                                var text = parseInt(d.data.ID, 10).toString(16).toUpperCase();
+                                var count = 0;
+                                for (var i = text.length - 1; i >= 0; i--) {
+                                  if (count >= 1 && i > 0) {
+                                    text = [text.slice(0,i), ":", text.slice(i)].join("");
+                                    count = 0;
+                                  }
+                                  else {
+                                    count++;
+                                  }
+                                }
+                                return text + " - " + d.data.count;
+                              });
+
+        arcsID.append("path").attr("d",innerArc)
+                              .attr("stroke", "dimgray")
+                              .attr("stroke-width", 2)
+                              .attr("fill", function (d) { return scaleID(d.data.ID); })                              
+                              .on("click", IDRemove)
+                              .on("mouseover", highlightID)
+                              .on("mouseout", dehighlightID);  
+
+
+      })                        // update ID chart
+    }
+
+    function drawER() {
+      // update Error chart
+      d3.json("/fER", function (data) {
+
+        // erase earlier set
+        fgroupER.selectAll("g").remove();
+
+        // creates groups for each set of data
+        var arcsER = fgroupER.selectAll(".arc")
+                              .data(pieID(data))
+                              .enter()
+                              .append("g")
+                              .attr("class","arc");
+
+        // add the arcs and the text
+        arcsER.append("line").attr("x1", function (d) { return innerArc.centroid(d)[0]; })
+                              .attr("y1", function (d) { return innerArc.centroid(d)[1]; })
+                              .attr("x2", function (d) { return midArc.centroid(d)[0]; })
+                              .attr("y2", function (d) { return midArc.centroid(d)[1]; })
+                              .attr("stroke-width", 3)
+                              .attr("stroke", "dimgray");
+        arcsER.append("text").attr("transform", function (d) { return "translate(" + outerArc.centroid(d) + ")" })
+                              .attr("text-anchor", "middle")
+                              .attr("font-size", 20)
+                              .text(function (d) { 
+                                var text = parseInt(d.data.ID, 10).toString(16).toUpperCase();
+                                var count = 0;
+                                for (var i = text.length - 1; i >= 0; i--) {
+                                  if (count >= 1 && i > 0) {
+                                    text = [text.slice(0,i), ":", text.slice(i)].join("");
+                                    count = 0;
+                                  }
+                                  else {
+                                    count++;
+                                  }
+                                }
+                                return text + " - " + d.data.count;
+                              });
+
+        arcsER.append("path").attr("d",innerArc)
+                              .attr("stroke", "dimgray")
+                              .attr("stroke-width", 2)
+                              .attr("fill", function (d) { return scaleER(d.data.ID); })                              
+                              .on("click", toggleER)
+                              .on("mouseover", highlightER)
+                              .on("mouseout", dehighlightER);   
+      
+      })
+    }
+
+    function drawGD() {
+      // update Good chart
+      d3.json("/fGD", function (data) {
+
+        // erase earlier set
+        fgroupGD.selectAll("g").remove();
+
+        // creates groups for each set of data
+        var arcsGD = fgroupGD.selectAll(".arc")
+                              .data(pieID(data))
+                              .enter()
+                              .append("g")
+                              .attr("class","arc");
+
+        // add the arcs and the text
+        arcsGD.append("line").attr("x1", function (d) { return innerArc.centroid(d)[0]; })
+                              .attr("y1", function (d) { return innerArc.centroid(d)[1]; })
+                              .attr("x2", function (d) { return midArc.centroid(d)[0]; })
+                              .attr("y2", function (d) { return midArc.centroid(d)[1]; })
+                              .attr("stroke-width", 3)
+                              .attr("stroke", "dimgray");
+        arcsGD.append("text").attr("transform", function (d) { return "translate(" + outerArc.centroid(d) + ")" })
+                              .attr("text-anchor", "middle")
+                              .attr("font-size", 20)
+                              .text(function (d) { 
+                                var text = parseInt(d.data.ID, 10).toString(16).toUpperCase();
+                                var count = 0;
+                                for (var i = text.length - 1; i >= 0; i--) {
+                                  if (count >= 1 && i > 0) {
+                                    text = [text.slice(0,i), ":", text.slice(i)].join("");
+                                    count = 0;
+                                  }
+                                  else {
+                                    count++;
+                                  }
+                                }
+                                return text + " - " + d.data.count;
+                              });
+
+        arcsGD.append("path").attr("d",innerArc)
+                              .attr("stroke", "dimgray")
+                              .attr("stroke-width", 2)
+                              .attr("fill", function (d) { return scaleGD(d.data.ID); })                              
+                              .on("click", toggleGD)
+                              .on("mouseover", highlightGD)
+                              .on("mouseout", dehighlightGD);   
+      
+      })    
+    }
+
+    // 
+    function redrawEffect (frame, group, data, color, push, lastLeft, left) {
+        // Clear the group to load new data
+        group.selectAll("rect").remove()
+
+        group.selectAll("rect")
+              .data(data)
+              .enter()
+                .append("rect")
+                .attr("width", 20)
+                .attr("height", 50)
+                .attr("x", function(d,i)  { return (i*22)} )
+                .attr("stroke", "dimgray")
+                .attr("stroke-width", 2)
+                .attr("fill", function(d) { return ((d == 1) ? color : "white") } );
+
+
+        //moves the group to the approperate x axis spot
+        group.attr("transform", "translate(" + (11+lastLeft.value) + ",20)"); 
+
+        // Moves the frame to be in the right spot
+        frame.attr("width", 20+(22*group.selectAll("rect").size()))
+              .attr("transform", "translate(" + lastLeft.value + ", 10)" );
+
+        // using the last known left and the with of this frame we can get the very last pixel of this length
+        left.value = lastLeft.value + parseInt(frame.attr("width")); 
+    }
+    
+    // flash if there is an error
+    function errorFlash() {
+      
+      if (errorData.ERROR == 1){
+        errorBox.attr("fill","Crimson");
+        if (errorBox.attr("opacity") == 0.00) {
+          errorBox.transition()
+                  .attr("opacity", 1.00) 
+        }
+        else { 
+          errorBox.transition()
+                  .attr("opacity", 0.00)
+        }
+      }
+      else {
+        errorBox.attr("fill","white")
+                .attr("opacity", 0.00);
+      }
+    }
+
+    setInterval(function () { errorFlash() }, 500);
+
+    setInterval(function () { redraw() }, 250);
+
+    setInterval(function () { drawID() }, 250);
+
+    setInterval(function () { drawER() }, 250);
+
+    setInterval(function () { drawGD() }, 250);
+
+
+    
   </script>
 </body>
+
+
