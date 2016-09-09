@@ -1,0 +1,51 @@
+17
+	a)
+		0.6 none parallelizable
+		0.4 parallelizable at 2x
+		1/(0.6 + 0.4/2) = 1.25
+
+	b)
+		0.01 none parallelizable
+		0.99 parallelizable at 2x
+		1/(0.01 + 0.99/2) = 1.98
+		
+	c) 
+		0.2 of total system uneffected
+		0.8 of total system effected
+			0.6 of that uneffected
+			0.4 of that at 2x
+		1/(0.2 + (0.8*0.6 + 0.8*0.4/2)) = 1.19
+	d)
+		0.8 of total system uneffected
+		0.2 of total system effected
+			0.01 of that uneffected
+			0.99 of that at 2x
+		1/(0.8 + (0.2*0.01 + 0.2*0.99/2)) = 1.11
+	
+18
+	a)
+		0.2 not effected
+		0.8 effected at Nx
+		1/(0.2 + 0.8/N)
+		
+	b)
+		0.2 not effected
+		0.8 effected at 8x with an addition of 8*0.005 to the total time
+		1/(0.2 + 0.8/8 + 0.005*8) = 2.94
+		
+	c)
+		0.2 not effected
+		0.8 effected at 8x with an addition of log2(8)*0.005 to the total time 
+		1/(0.2 + 0.8/8 + 0.005*3) = 3.17
+		
+	d)
+		0.2 not effected
+		0.8 effected at Nx with an addition of log2(N)*0.005 to the total time 
+		1/(0.2 + 0.8/N + 0.005*log2(N) 
+		
+	e)
+		S/100 not effected 
+		P/100 effected at Nx with an addition of log2(N)*0.005 to the total time
+		1/(S/100 + P/100/N + 0.005*log2(N)) 
+		
+	

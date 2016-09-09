@@ -96,7 +96,11 @@ while True:
 	wFile.write("\"ERROR\":"+str(error)+"}]")
 
 	wFile.close() # Close the flip
+<<<<<<< HEAD
 	time.sleep(0.25)  # 1.5 second sleep cycle.
+=======
+	time.sleep(0.050)  # 1.5 second sleep cycle.
+>>>>>>> 256cb23fb5d5f1842bcd1240625932bf2b14522e
 
 
 
