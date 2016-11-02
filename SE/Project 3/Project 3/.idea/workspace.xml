@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Project 3:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/com/GUI/TicTacToeBoard.java" line="538" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/GUI/TicTacToeBoard.java" line="705" />
+    <bookmark url="file://$PROJECT_DIR$/src/com/GUI/TicTacToeBoard.java" line="433" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7c76e9b6-d8c4-4ee6-b92c-2b57a3d5f469" name="Default" comment="" />
@@ -28,25 +34,27 @@
       <file leaf-file-name="TicTacToeBoard.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/GUI/TicTacToeBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.9770114">
-              <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.6593521">
+              <caret line="441" column="13" selection-start-line="441" selection-start-column="13" selection-end-line="441" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="n#!!doc;n#pnMain#0;n#TicTacToeBoard#0" expanded="false" />
-                <element signature="class#2511:3471" expanded="false" />
-                <element signature="class#3569:4442" expanded="false" />
-                <element signature="e#4662#4682#0" expanded="false" />
-                <element signature="e#7146#7166#0" expanded="false" />
-                <element signature="e#8385#8405#0" expanded="false" />
-                <element signature="e#9627#9647#0" expanded="false" />
-                <element signature="e#10869#10889#0" expanded="false" />
-                <element signature="e#12108#12128#0" expanded="false" />
-                <element signature="e#13350#13370#0" expanded="false" />
+                <element signature="e#3604#3624#0" expanded="false" />
+                <element signature="e#4996#5016#0" expanded="false" />
+                <element signature="e#6388#6408#0" expanded="false" />
+                <element signature="e#7777#7797#0" expanded="false" />
+                <element signature="e#9169#9189#0" expanded="false" />
+                <element signature="e#10561#10581#0" expanded="false" />
+                <element signature="e#11950#11970#0" expanded="false" />
+                <element signature="e#13342#13362#0" expanded="false" />
+                <element signature="e#14734#14754#0" expanded="false" />
+                <element signature="e#16550#16582#0" expanded="false" />
+                <element signature="method#gameOver#0;class#TicTacToeBoard#0" expanded="false" />
                 <element signature="method#changeTurnIndicator#0;class#TicTacToeBoard#0" expanded="false" />
-                <element signature="method#winCheck#0;class#TicTacToeBoard#0" expanded="false" />
-                <element signature="e#16803#16833#0" expanded="false" />
-                <element signature="e#18112#18142#0" expanded="false" />
-                <element signature="method#main#0;class#TicTacToeBoard#0" expanded="false" />
+                <element signature="e#20962#20992#0" expanded="false" />
+                <element signature="e#22271#22301#0" expanded="false" />
+                <element signature="method#boardClear#0;class#TicTacToeBoard#0" expanded="false" />
+                <element signature="method#startingValues#0;class#TicTacToeBoard#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -145,6 +153,20 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project 3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Project 3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="GUI" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -162,6 +184,9 @@
   <component name="PropertiesComponent">
     <property name="UI_DESIGNER_EDITOR_MODE.UIDesignerToolWindowManager.WIDTH" value="547" />
     <property name="UI_DESIGNER_EDITOR_MODE.PaletteManager.WIDTH" value="434" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunManager" selected="Application.TicTacToeBoard">
     <configuration default="false" name="TicTacToeBoard" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -451,8 +476,8 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1456" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="2576" height="1456" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -460,7 +485,7 @@
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23827825" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23827825" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12277931" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -490,15 +515,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/com/GUI/TicTacToeBoard.java</url>
-          <line>434</line>
-          <properties class="com.GUI.TicTacToeBoard" method="winCheck" />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -510,20 +527,22 @@
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#pnMain#0;n#TicTacToeBoard#0" expanded="false" />
-            <element signature="class#2511:3471" expanded="false" />
-            <element signature="class#3569:4442" expanded="false" />
-            <element signature="e#4662#4682#0" expanded="false" />
-            <element signature="e#7146#7166#0" expanded="false" />
-            <element signature="e#8385#8405#0" expanded="false" />
-            <element signature="e#9627#9647#0" expanded="false" />
-            <element signature="e#10869#10889#0" expanded="false" />
-            <element signature="e#12108#12128#0" expanded="false" />
-            <element signature="e#13350#13370#0" expanded="false" />
+            <element signature="e#3604#3624#0" expanded="false" />
+            <element signature="e#4996#5016#0" expanded="false" />
+            <element signature="e#6388#6408#0" expanded="false" />
+            <element signature="e#7777#7797#0" expanded="false" />
+            <element signature="e#9169#9189#0" expanded="false" />
+            <element signature="e#10561#10581#0" expanded="false" />
+            <element signature="e#11950#11970#0" expanded="false" />
+            <element signature="e#13342#13362#0" expanded="false" />
+            <element signature="e#14734#14754#0" expanded="false" />
+            <element signature="e#16550#16582#0" expanded="false" />
+            <element signature="method#gameOver#0;class#TicTacToeBoard#0" expanded="false" />
             <element signature="method#changeTurnIndicator#0;class#TicTacToeBoard#0" expanded="false" />
-            <element signature="method#winCheck#0;class#TicTacToeBoard#0" expanded="false" />
-            <element signature="e#16803#16833#0" expanded="false" />
-            <element signature="e#18112#18142#0" expanded="false" />
-            <element signature="method#main#0;class#TicTacToeBoard#0" expanded="false" />
+            <element signature="e#20962#20992#0" expanded="false" />
+            <element signature="e#22271#22301#0" expanded="false" />
+            <element signature="method#boardClear#0;class#TicTacToeBoard#0" expanded="false" />
+            <element signature="method#startingValues#0;class#TicTacToeBoard#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -549,28 +568,107 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/GUI/TicTacToeBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.9770114">
-          <caret line="60" column="30" selection-start-line="60" selection-start-column="30" selection-end-line="60" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.6593521">
+          <caret line="441" column="13" selection-start-line="441" selection-start-column="13" selection-end-line="441" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="n#!!doc;n#pnMain#0;n#TicTacToeBoard#0" expanded="false" />
-            <element signature="class#2511:3471" expanded="false" />
-            <element signature="class#3569:4442" expanded="false" />
-            <element signature="e#4662#4682#0" expanded="false" />
-            <element signature="e#7146#7166#0" expanded="false" />
-            <element signature="e#8385#8405#0" expanded="false" />
-            <element signature="e#9627#9647#0" expanded="false" />
-            <element signature="e#10869#10889#0" expanded="false" />
-            <element signature="e#12108#12128#0" expanded="false" />
-            <element signature="e#13350#13370#0" expanded="false" />
+            <element signature="e#3604#3624#0" expanded="false" />
+            <element signature="e#4996#5016#0" expanded="false" />
+            <element signature="e#6388#6408#0" expanded="false" />
+            <element signature="e#7777#7797#0" expanded="false" />
+            <element signature="e#9169#9189#0" expanded="false" />
+            <element signature="e#10561#10581#0" expanded="false" />
+            <element signature="e#11950#11970#0" expanded="false" />
+            <element signature="e#13342#13362#0" expanded="false" />
+            <element signature="e#14734#14754#0" expanded="false" />
+            <element signature="e#16550#16582#0" expanded="false" />
+            <element signature="method#gameOver#0;class#TicTacToeBoard#0" expanded="false" />
             <element signature="method#changeTurnIndicator#0;class#TicTacToeBoard#0" expanded="false" />
-            <element signature="method#winCheck#0;class#TicTacToeBoard#0" expanded="false" />
-            <element signature="e#16803#16833#0" expanded="false" />
-            <element signature="e#18112#18142#0" expanded="false" />
-            <element signature="method#main#0;class#TicTacToeBoard#0" expanded="false" />
+            <element signature="e#20962#20992#0" expanded="false" />
+            <element signature="e#22271#22301#0" expanded="false" />
+            <element signature="method#boardClear#0;class#TicTacToeBoard#0" expanded="false" />
+            <element signature="method#startingValues#0;class#TicTacToeBoard#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>Project 3:jar</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Project 3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
   </component>
 </project>
