@@ -1,0 +1,18 @@
+class TicTacToeBoard - Contains all of the GUI elements as well as all of the program logic.
+
+public TicTacToeBoard() - Constructor for the TicTacToeBoard class. This is called by the main function and includes all of the action listeners. The application only includes 1 type of action listener which is the mouse click event. It is also applied to 2 types of objects. The first is the main menu buttons which cause it to launch the game with the correct flags for that game mode. The second is the logic for the user selecting a square, which checks to see if the square is taken and places a mark on it if it is not. It also always checks for a victory condition after the placement and launches the AI_Logic() function if the onePlayerMode flag is set to true.
+
+private void AI_Logic() - Performs to move for the AI. Also checks if the victory condition is met.
+
+private void gameOver() - When called this prompts the user with who the won the game and asks if they would like a rematch or to return to the main menu. It also changes the correct flags to perform the users choice.
+
+private void changeTurnIndicator() - Checks whos turn it is and assigns the indicator to the correct user.
+
+private boolean winCheck() - Returns true if a victory condition is met, false if it is not. It also flags the winner flag with which player won the game (0 for player 1, 1 for player 2 and 2 if the game is a draw).
+
+private void boardClear() - Clears the board both visually and in the boardFill array.
+
+private void startingValues() - Sets that starting flags when starting a game from the main menu. These are the values that are the same regaurdless of a one or two player game.
+
+public static void main(String[] args) - The main function. Starts a JFrame and sets the main panel as its context panel.
+

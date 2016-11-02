@@ -478,162 +478,193 @@ public class TicTacToeBoard {
                                 break;
                         }
                     }
+                    // Check if AI can Win this turn with the center
+                    int result = -1;
+                    result = centerLineCheck(1);
+                    if (result != -1 && boardFill[1][4]) { // AI can win this move
+                        spotChosen = result; // place result
+                    }
+                    else { // check if see if AI can win on the sides
+                        result = sideLineCheck(1);
+                        if (result != -1) { // AI can win this move
+                            spotChosen = result; // place result
+                        }
+                        else { // See if opposite player can win from the middle
+                            result = centerLineCheck(0);
+                            if (result != -1 && boardFill[0][4]) { // opponent can win
+                                spotChosen = result; // block opponent
+                            }
+                            else { // check if opponent can win for the sides
+                                result = sideLineCheck(0);
+                                if (result != -1) { // opponent can win
+                                    spotChosen = result; // block opponent
+                                }
+                                else { //region The Paths
 
-                    // Now that path is selected go to path logic
-                    //region PATH 1
-                    if (aiPath == 1) { // AI on Path 1
-                        if (boardFill[1][8]) { // spot 8 taken already
-                            if ((boardFill[0][2] || boardFill[0][6]) && (!boardFill[2][2] || !boardFill[2][6])) { // O played in spot 2 or 6 and the opposite is open
-                                if (!boardFill[2][2]) { // spot 2 is open
-                                    spotChosen = 2;
-                                } else { // spot 6 is open
-                                    spotChosen = 6;
-                                }
-                            }
-                            else { // o played somewhere else
-                                int result = -1;
-                                result = sideLineCheck(1);
-                                if (result != -1) { // AI can win this move
-                                    spotChosen = result; // place result
-                                }
-                                else { // check if opponent can win this round
-                                    result = centerLineCheck(0);
-                                    if (result != -1) { // opponent can win
-                                        spotChosen = result; // block opponent
-                                    }
-                                    else { // place randomly as it does not mater
-                                        spotChosen = randomResult();
-                                    }
-                                }
-                            }
-                        }
-                        else { // place in spot 8
-                            spotChosen = 8;
-                        }
-                    } //endregion
-                    // region PATH 2
-                    else if (aiPath == 2) { //AI on path 2
-                        if (boardFill[0][8]) { // O took 8
-                            if (boardFill[1][2]) { // did AI already take 2
-                                if (boardFill[0][1]) { // O blocked
-                                    if (boardFill[1][6]) { // AI alread took 6
-                                        if (!boardFill[2][3]) { // if 3 is open take it
-                                            spotChosen = 3;
+                                    // Now that path is selected go to path logic
+                                    //region PATH 1
+                                    if (aiPath == 1) { // AI on Path 1
+
+
+                                        if (boardFill[1][8]) { // spot 8 taken already
+                                            if ((boardFill[0][2] || boardFill[0][6]) && (!boardFill[2][2] || !boardFill[2][6])) { // O played in spot 2 or 6 and the opposite is open
+                                                if (!boardFill[2][2]) { // spot 2 is open
+                                                    spotChosen = 2;
+                                                } else { // spot 6 is open
+                                                    spotChosen = 6;
+                                                }
+                                            }
+                                            else { // o played somewhere else
+                                                int result = -1;
+                                                result = sideLineCheck(1);
+                                                if (result != -1) { // AI can win this move
+                                                    spotChosen = result; // place result
+                                                }
+                                                else { // check if opponent can win this round
+                                                    result = centerLineCheck(0);
+                                                    if (result != -1) { // opponent can win
+                                                        spotChosen = result; // block opponent
+                                                    }
+                                                    else { // place randomly as it does not mater
+                                                        spotChosen = randomResult();
+                                                    }
+                                                }
+                                            }
                                         }
-                                        else if (!boardFill[2][4]) { // if 4 is open take it
+                                        else { // place in spot 8
+                                            spotChosen = 8;
+                                        }
+                                    } //endregion
+                                    // region PATH 2
+                                    else if (aiPath == 2) { //AI on path 2
+                                        if (boardFill[0][8]) { // O took 8
+                                            if (boardFill[1][2]) { // did AI already take 2
+                                                if (boardFill[0][1]) { // O blocked
+                                                    if (boardFill[1][6]) { // AI alread took 6
+                                                        if (!boardFill[2][3]) { // if 3 is open take it
+                                                            spotChosen = 3;
+                                                        }
+                                                        else if (!boardFill[2][4]) { // if 4 is open take it
+                                                            spotChosen = 4;
+                                                        }
+                                                        else { // should not need but just in case
+                                                            spotChosen = randomResult();
+                                                        }
+                                                    }
+                                                    else { // take 6
+                                                        spotChosen = 6;
+                                                    }
+                                                }
+                                                else { // O left 1 open win!
+                                                    spotChosen = 1;
+                                                }
+                                            }
+                                            else {
+                                                spotChosen = 2;
+                                            }
+                                        }
+                                        else { // 8 is open
+                                            if (boardFill[1][8]) { // did AI already take 8
+                                                if (boardFill[0][4]) { // O blocked
+                                                    // attempt to win and guard like in path 1
+                                                    int result = -1;
+                                                    result = sideLineCheck(1);
+                                                    if (result != -1) { // AI can win this move
+                                                        spotChosen = result; // place result
+                                                    }
+                                                    else { // check if opponent can win this round
+                                                        result = centerLineCheck(0);
+                                                        if (result != -1) { // opponent can win
+                                                            spotChosen = result; // block opponent
+                                                        }
+                                                        else { // place randomly as it does not mater
+                                                            spotChosen = randomResult();
+                                                        }
+                                                    }
+                                                }
+                                                else { // O left 4 open win!
+                                                    spotChosen = 4;
+                                                }
+                                            }
+                                            else {
+                                                spotChosen = 8;
+                                            }
+                                        }
+
+                                    } //endregion
+                                    //region PATH 3
+                                    else if (aiPath == 3) {
+                                        if (boardFill[1][4]) { // already took 4
+                                            //center attack if possible otherwise block
+                                            int result = -1;
+                                            result = centerLineCheck(1);
+                                            if (result != -1) { // AI can win this move
+                                                spotChosen = result; // place result
+                                            }
+                                            else { // check if see if line attack is possible
+                                                result = sideLineCheck(1);
+                                                if (result != -1) { // AI can win this move
+                                                    spotChosen = result; // place result
+                                                }
+                                                else { // block player
+                                                    result = sideLineCheck(0);
+                                                    if (result != -1) { // opponent can win
+                                                        spotChosen = result; // block opponent
+                                                    }
+                                                    else { // place randomly as it does not mater
+                                                        spotChosen = randomResult();
+                                                    }
+                                                }
+                                            }
+                                        }
+                                        else { //take 4
                                             spotChosen = 4;
                                         }
-                                        else { // should not need but just in case
-                                            spotChosen = randomResult();
+                                    } //endregion
+                                    //region PATH 4
+                                    else if (aiPath == 4) {
+                                        if (boardFill[1][4]) { // already took 4
+                                            //center attack if possible otherwise block
+                                            int result = -1;
+                                            result = centerLineCheck(1);
+                                            if (result != -1) { // AI can win this move
+                                                spotChosen = result; // place result
+                                            }
+                                            else { // check if see if line attack is possible
+                                                result = sideLineCheck(1);
+                                                if (result != -1) { // AI can win this move
+                                                    spotChosen = result; // place result
+                                                }
+                                                else { // block player
+                                                    result = sideLineCheck(0);
+                                                    if (result != -1) { // opponent can win
+                                                        spotChosen = result; // block opponent
+                                                    }
+                                                    else { // force O into a loss
+                                                        if (boardFill[0][1] && !boardFill[2][6]) { // take spot 6 to force O into a loss
+                                                            spotChosen = 6;
+                                                        }
+                                                        else if (boardFill[0][3] && !boardFill[2][2]) { // take spot 2 to force O into a loss
+                                                            spotChosen = 2;
+                                                        }
+                                                        else { // Random just in case
+                                                            spotChosen = randomResult();
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
-                                    }
-                                    else { // take 6
-                                        spotChosen = 6;
-                                    }
-                                }
-                                else { // O left 1 open win!
-                                    spotChosen = 1;
-                                }
-                            }
-                            else {
-                                spotChosen = 2;
-                            }
-                        }
-                        else { // 8 is open
-                            if (boardFill[1][8]) { // did AI already take 8
-                                if (boardFill[0][4]) { // O blocked
-                                    // attempt to win and guard like in path 1
-                                    int result = -1;
-                                    result = sideLineCheck(1);
-                                    if (result != -1) { // AI can win this move
-                                        spotChosen = result; // place result
-                                    }
-                                    else { // check if opponent can win this round
-                                        result = centerLineCheck(0);
-                                        if (result != -1) { // opponent can win
-                                            spotChosen = result; // block opponent
+                                        else { //take 4
+                                            spotChosen = 4;
                                         }
-                                        else { // place randomly as it does not mater
-                                            spotChosen = randomResult();
-                                        }
-                                    }
-                                }
-                                else { // O left 4 open win!
-                                    spotChosen = 4;
-                                }
-                            }
-                            else {
-                                spotChosen = 8;
-                            }
-                        }
+                                    } //endregion
 
-                    } //endregion
-                    //region PATH 3
-                    else if (aiPath == 3) {
-                        if (boardFill[1][4]) { // already took 4
-                            //center attack if possible otherwise block
-                            int result = -1;
-                            result = centerLineCheck(1);
-                            if (result != -1) { // AI can win this move
-                                spotChosen = result; // place result
-                            }
-                            else { // check if see if line attack is possible
-                                result = sideLineCheck(1);
-                                if (result != -1) { // AI can win this move
-                                    spotChosen = result; // place result
-                                }
-                                else { // block player
-                                    result = sideLineCheck(0);
-                                    if (result != -1) { // opponent can win
-                                        spotChosen = result; // block opponent
-                                    }
-                                    else { // place randomly as it does not mater
-                                        spotChosen = randomResult();
-                                    }
-                                }
+
+                                } //endregion
                             }
                         }
-                        else { //take 4
-                            spotChosen = 4;
-                        }
-                    } //endregion
-                    //region PATH 4
-                    else if (aiPath == 4) {
-                        if (boardFill[1][4]) { // already took 4
-                            //center attack if possible otherwise block
-                            int result = -1;
-                            result = centerLineCheck(1);
-                            if (result != -1) { // AI can win this move
-                                spotChosen = result; // place result
-                            }
-                            else { // check if see if line attack is possible
-                                result = sideLineCheck(1);
-                                if (result != -1) { // AI can win this move
-                                    spotChosen = result; // place result
-                                }
-                                else { // block player
-                                    result = sideLineCheck(0);
-                                    if (result != -1) { // opponent can win
-                                        spotChosen = result; // block opponent
-                                    }
-                                    else { // force O into a loss
-                                        if (boardFill[0][1] && !boardFill[2][6]) { // take spot 6 to force O into a loss
-                                            spotChosen = 6;
-                                        }
-                                        else if (boardFill[0][3] && !boardFill[2][2]) { // take spot 2 to force O into a loss
-                                            spotChosen = 2;
-                                        }
-                                        else { // Random just in case
-                                            spotChosen = randomResult();
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                        else { //take 4
-                            spotChosen = 4;
-                        }
-                    } //endregion
+                    }
+
 
                 }
 
