@@ -1,0 +1,26 @@
+Assume a cache with 2K 2-word blocks and 16 bit addresses
+
+Find the total number of sets and the total number of tag bits for a 
+
+direct mapped cache 
+	Sets = Blocks, total sets = 2K
+	log(2k)=11 bits for index
+	8 bytes/block -> offset = 3 -> 16 - 3 - 11 = 2 bits for tag -> 13 bits for tag and index.
+	2 tag bits/location * 2k locations = 4Kbits for total tag bits
+
+two-way set associative cache
+	Sets = blocks/2, total sets = 1K
+	log(1k)=10 bits for index
+	8 bytes/block -> offset = 3 -> 16 - 3 - 10 = 3 bits for tag -> 13 bits for tag and index.
+	3 tag bits/location * 2 locations/set * 1k sets  = 6Kbits for total tag bits
+
+four-way set associative cache
+	Sets = blocks/4, total sets = 512
+	log(512)=9 bits for index
+	8 bytes/block -> offset = 3 -> 16 - 3 - 9 = 4 bits for tag -> 13 bits for tag and index.
+	4 tag bits/location * 4 locations/set * 512 sets = 8Kbits for total tag bits
+	
+fully associative cache
+	1 Set of 2k Blocks
+	index = 0 bits -> 13 bits for the tag.
+	13 tag bits/location * 2k locations/set * 1 set = 26Kbits for total tag bits

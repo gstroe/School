@@ -84,4 +84,4 @@ void function2 ( void )
 
 }
 
-/* Text after the end of Block Comment SHOULD be counted as LOC - but BAD programming style!! */    Total Program LOC: 25
+/* Text after the end of Block Comment SHOULD be counted as LOC - but BAD programming style!! */    Total Program LOC: 24
