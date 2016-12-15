@@ -1,0 +1,52 @@
+FALL 2015 EXAM
+
+1a. TTTTTTNNNTTTTTNTTTNN
+	11111101101111001101
+	25% fail rate
+	
+1b. TTTTTTNNNTTTTTNTTTNN
+	11111100100111011100
+	35% fail rate
+
+2a. -129.6875
+	1 for negitive
+	129 = 1000 0001
+	2x.6875 	1
+	2x.375		0
+	2x.75		1
+	2x.5		1
+	so .6875 = .1011
+	1000 0001.1011
+	shift = 7 = 1.00000011011
+	exp = 127 + 7 = 134 = ‭10000110‬
+	Final = 1 10000110‬ 0000001101100000000000
+	
+2b. 1 10001100 10101000000000000000000
+	first = 1 so value is -
+	10001100 = 140 -> 140-127 = 13 for exponent
+	1.10101000000000000000000 -> 1.10101 
+	1.10101 with exp -> 11010100000000 = 13568
+	final = -13568
+	
+3. 	10 MB / (128 Words x 4B/word)
+	10485760 / 512 = 20480 blocks
+	Sets = blocks/4 = 5120 sets
+	log(5120) = 13 for index
+	512 bytes per block -> offest = 9 -> 16 -9 -13 = -6 bits for tag
+	-6 tag bits/location * 4 locations/set * 5120 sets = -122880 = -120Kbits for total tag bits
+
+5a. Or needs $12 and $2
+	And needs $2
+	Sw Needs $2015
+	
+5b. Or = 4 cycles
+	And = 4 Cycles
+	Sw = 2 Cycles
+	
+FILL IN THE BLANKS
+1.  Reservation stations
+2. Blocking is preventing resources from being accessed while other objects are using those resorces
+3. miss rate is the number of misses per instructions times the instructions per memory access.
+4. Without piplining it would be the number of instructions times each instruction count. With piplining it is equal to the number of instructions + any stalls.
+5. 2ns, for 12 pipelinrd processors it would be 1/6ns
+	
