@@ -14,7 +14,7 @@ t-3 - The infected get out of the holding zone and begin attacking what ever lef
 
 t-1.5 - Firewall arrives on the ship after tailing it for its high risk purchase. They decide to intercept and board after seeing the ship has been on emergancy power for 2 hours.
 
-t-1 - the firewall team encounter the infected and lose one man to it, they no on the.
+t-1 - the firewall team encounter the infected and loses Paul Jones to it, they no on the.
 
 t-0.5 - jason comes to, awoken buy the sound of his guard getting murdered by an infected crystalid. It doesn't knowtice jason and moves past him. The electrial shield of his hold is now down and he can use his psi powers on outside objects. Their is also a veint that is bolted on, using a part of the toliet in the cell he could potentially break out.
 
