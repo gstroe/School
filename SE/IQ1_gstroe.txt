@@ -1,0 +1,8 @@
+Q1: What are some advatages to the Waterfall method? What are some disadvatages?
+A1: The main advatages are that the Waterfall method is simple and each phase leads to the next. This allows for the development to be done in phases. The main disadvatage is that that the process is slow and doesnt allow for the fragmentation of software parts. This means that software won't be ready untill later in the development cycle.
+
+Q2: Can you change requirements later on in the development cycle? If you can is this prefered? 
+A2: Yes you can. Sometimes the customers requirements can change as the customer may change what they want. This is not Ideal but satisfying the customer is the end goal.
+
+Q3: What is Regression Testing? Why should it be done?
+A3: Regression testing is performing testing on functions and units that you have already tested after seemingly unrelated changes tot he code have been done. It is called regression testing because we are seeing if the system has "regressed" after those changes. This is is necessary because any small changes in the code may have had some unforseen consequences that breaks previously working functions. 

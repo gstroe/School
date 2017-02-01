@@ -1,0 +1,78 @@
+FINAL EXAM
+
+1.	2 MB / (32 Words x 2B/word)
+	2097152 / 64 = 32768 blocks
+	Sets = blocks/4 = 8192 sets
+	log(8192) = 13 for index
+	64 bytes per block -> offest = 6 -> 16 -6 -13 = -3 bits for tag
+	-3 tag bits/location * 4 locations/set * 8192 sets = -98304 = -96Kbits for total tag bits
+
+2.	One Branch
+	TTTNNTTTTTTNNTTTNNTTTT
+	 110101111101011010111
+	 15/21 successes
+	 28.6% error rate
+	 
+	Two Branch 
+	TTTNNTTTTTTNNTTTNNTTTT
+	  10000111100001000011
+	  8/21 successes
+	  61.9% error rate
+	  
+	  One branch is much better with this type of routines.
+	  
+
+3a. C1: F4=F0*F2
+	C2: F6=F4*F0
+	A1: R1=R1-#8
+	
+3b. Better Dynamic Scheduling and Load/store disambiguation
+
+4. 	Convert 123.225
+	0 for positive
+	123 = 111 1011
+	2x.225	0
+	2x.45	0
+	2x.90	1
+	2x.80	1
+	2x.60	1
+	2x.20	0
+	2x.40	0
+	2x.80	1
+	2x.60	1
+	2x.20	0
+	2x.40	0
+	so .225 = .00111001100 with a repeating 1100 pattern
+	1111011.00111001100
+	shift = 6 = 1.11101100111001100
+	exp = 127 + 6 = 133 = ‭10000101‬
+	Final = 0 10000101 ‬11101100111001100110011
+	
+	In Hex: 0x42 F6 73 33
+	
+5. 	Hazards:
+	SUBF needs F4 from ADDF, RAW Hazard
+	MUlTF needs F1 from SUBF, RAW Hazard
+	SF needs F6 from MULTF, RAW Hazard
+	LF needs F1 form MULTF and F5 from SF, WAR Hazard and RAW hazard
+	SUBF needs F1 from LF, RAW hazard
+	
+	SUBF = 4 stalls
+	MUlTF = 6 stalls
+	SF = 3 stalls
+	LF = 5 Stalls
+	SUBF = 5 Stalls
+	Total = 23 Stalls
+	
+SHORT ANSWER
+
+1.	Removes Data Dependancies and Name Dependancies
+
+2. 	Reducing the hit time - using way-prediction to reduce miss rates and reduce the time it takes to choose which block to hit.
+
+3. 	A is true.
+
+4. 	Temporal Locality - any items recently addressed will likly be addressed again in the near future.
+	
+	Spatial Locality - items that are closer together in memory location are more likely to be access at close times to one another.
+	

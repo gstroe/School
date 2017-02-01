@@ -1,0 +1,8 @@
+Q1: Explain what is the purpose of masking?
+A1: The purpose of masking is to allow only a specific set of bits to be modified when writing values into memory. For example the memory address of 0x400 may contain a bits of data that all proivide different flags for  the system. By "masking" the first four bits we can affect the last four without modifying the first four.
+
+Q2: What is one purpose of creating a detailed design before coding one's actual project?
+A2: Completing the detailled design will help see potential issues and adjust the design accordingly before reaching that point. These type of errors would not have been able to be predicted if one just started coding right away. So this will save time by not needing to rewrite code when there is an error in the design.
+
+Q3: What is qualifies as an embedded system?
+A3: An embedded system would be any device that has a microcontroller inside of it that interperates data and sends apropreate signals to the hardware it is contained in. An embedded system is also typicly contained with in a larger system and has one specfic function that it performs. This is unlike other systems which are typicly stand alone and can perform a variaty of functions.

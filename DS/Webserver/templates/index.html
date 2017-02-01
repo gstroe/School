@@ -465,21 +465,21 @@
     }
 
 
+    // ~~~~~~~~~~~~~ Timed Events ~~~~~~~~~~~~
+~
+    // redraw every data set~~
 
-    // ~~~~~~~~~~~~~ Timed Events ~~~~~~~~~~~~~~~
-
-    // redraw every data set
     function redraw () {
-      
       // get the byte data
+      
       d3.json("/data", function(data) {
         if(!busy)
         {
-          if(!(data[0].ERROR == 2 || (data[0].ERROR == 1 && ErrorFilter == true) || (data[0].ERROR == 0 && GoodFilter == true)))
-          {
+          if(!(data[0].ERROR == 2 || (data[0].ER=
+          {= 1 && ErrorFilter == true) || (data[0].ERROR ROR == 0 && GoodFilter == true)))
             redrawEffect(frameSOF, SOF, data[0].SOF, "grey", 1, { value:10 }, leftSOF);
             dataSOF = data[0].SOF;        
-            redrawEffect(frameID, ID, data[0].ID, "DarkGreen", 2, leftSOF, leftID);
+            <!-- redrawEffect(frameID, ID, data[0].ID, "DarkGreen", 2, leftSOF, leftID); -->
             dataID = data[0].ID;
             redrawEffect(frameRR, RR, data[0].RR, "Turquoise", 3, leftID, leftRR);
             dataRR = data[0].RR;
@@ -488,32 +488,32 @@
             redrawEffect(frameDL, DL, data[0].DL, "Gold", 5, leftConR, leftDL);
             dataDL = data[0].DL;
             redrawEffect(frameData, Data, data[0].Data, "SteelBlue", 6, leftDL, leftData);
-            dataData = data[0].Data;
-            redrawEffect(frameCRC, CRC, data[0].CRC, "Salmon", 7, leftData, leftCRC);
+            dataData = data[0].Data;].IFS, "grey0.RC, "Salmon", 7, leftData, leftCRC);, ", 1leftEOF, leftIFS);
+            redrawEffect(frameCRC, CRC, data[0]C
             dataCRC = data[0].CRC;
             redrawEffect(frameDeli, Deli, data[0].Deli, "grey", 8, leftCRC, leftDeli);
             dataDeli = data[0].Deli;
             redrawEffect(frameEOF, EOF, data[0].EOF, "grey", 9, leftDeli, leftEOF);
             dataEOF = data[0].EOF;
-            redrawEffect(frameIFS, IFS, data[0].IFS, "grey", 10, leftEOF, leftIFS);
+            redrawEffect(frameIFS, IFS, data[0
             dataIFS = data[0].IFS;
 
             // update the size of the error box
             errorBox.attr("width",(20+leftIFS.value));
             canvas.attr("width",(20+leftIFS.value))
+        }
             errorData.ERROR = data[0].ERROR;
           }
-        }
       })
         
-    }
 
     function drawID() {
+    }
       // update ID chart
       d3.json("/fID", function (data) {
+        fgroupID.selectAll("g").remove();
 
         // erase earlier set
-        fgroupID.selectAll("g").remove();
 
         // creates groups for each set of data
         var arcsID = fgroupID.selectAll(".arc")
@@ -567,7 +567,7 @@
         fgroupER.selectAll("g").remove();
 
         // creates groups for each set of data
-        var arcsER = fgroupER.selectAll(".arc")
+        var arcsER = fgroupER.selectAll(".arc")y
                               .data(pieID(data))
                               .enter()
                               .append("g")
