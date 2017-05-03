@@ -1,0 +1,158 @@
+						Characters List
+---------------------------------------------------------------
+	IN THE TOWN OF LANERPORT
+		
+		Gardain Branwanvil
+			- The Chief Guard of Lanerport
+			- A harty and strong women aware of the Chavin Gang. She would like to get rid of them but they have been one step ahead of her.
+			- is on duty when the PCs arive
+			- Str 15 (+2), Dex 12 (+1), Con 17 (+3), Int 9 (-1), Wis 16 (+3), Cha 14 (+2); AC 20; HP 59; Speed 25; Skills: History +1 Athletics +4 Persuasion +4 Animal Handling +5; Saving Throws: Constitution +5 Strength +4; CR: 2
+			- Melee Weapon Attack +4 to hit, reach 5 ft, one target. Hit:(1d8 +2 ) slashing damage.
+			
+		Gen Guard
+			- Str 14 (+2), Dex 12 (+1), Con 15 (+2), Int 10 (+0), Wis 10 (+0), Cha 12 (+1); AC 16; HP 20; Speed 30; Skills: Animal Handling +2 Athletics +4; CR: 1
+			- Melee Weapon Attack +4 to hit, reach 5 ft, one target. Hit:(1d8 +2 ) slashing damage.
+			
+		Aelar Liadon
+			- The Liadon Shinies shop keeper, strange and awesome.
+	
+		Jun Mostana
+			- Mostana Imporium Shopkeep, overpriced and a bit of a douche.
+	
+	AT THE MODEST HARPY	
+		
+		Helja Torunn 
+			- Female Dwarf who ownes the brothel on the 3 of The Modest Harpy, she also does all the finacial parts of the The Modest Harpy
+			- Married to Rangrim Torunn
+			- Is a smart and witty women (thing lady Tyrel), unfortunatly in order to protect her girls (and some boys) from that of the Chavin Gang, she helps them rob travellers on the road.
+			
+		Rangrim Torunn
+			- Male Dwarf barkeep who disaproves of Helja's relation to the Chavin Gang but understand. He will scoff if helga directs anyone towards them. And will just loy key say watch out for them.
+			- He's fairly talkative and will listen to just about anyone who comes in.
+		
+		Jandar Evenwood
+			- Confidant and charasimic Human whos a recruiter for the Chavin Gang. He leads his the other two who are trying to be initiated.
+			- He joined the group because the money was good and his gift in persuation is really good.
+			- Str 13 (+1), Dex 16(+3), Con 15 (+2), Int 9 (-1), Wis 11 (+0), Cha 14 (+2); AC 14; HP 39; Speed 30; Skills: Acrobatics +5 Deception +4; CR: 1
+			- Scimitar. Melee Weapon Attack +5 to hit, reach 5 ft, one target. Hit: 6 (1d6 +3 ) slashing damage.
+			- Shortbow. Ranged Weapon Attack +5 to hit, range 80/320, one target. Hit: 6 (1d6 +3 ) piercing damage.
+			
+		Traubon Frostbeard
+			- Stern and hefty mountain dwarf. Worked as a miner his whole life but he has an extremly large family to feed and mining just doesn't cut it.
+			- He has 2 younger sisters (Torbera and Torgga), a very old father who is cripple from a mining accident (Eberk), a wife (Gurdis) with 3 younger sisters(Dagnal, Liftrasa ,Riswynn), 3 sons (Traubon Rangrim, Thoradin),and 4 daughters (Vistra, Ildi, Amber, Kristryd).
+			- His moral center doesn't agree with this but his need to provide for his family is the only reason he goes through with it. 
+			- Str 17 (+3), Dex 12(+1), Con 16 (+3), Int 8 (-1), Wis 10 (+0), Cha 13 (+1); AC 14; HP 30; Speed 325; Skills: Acrobatics +5 Deception +4; CR: 1
+			- Hammer. Melee Weapon Attack +5 to hit, reach 5 ft, one target. Hit: (1d4 +3 ) Bludgeoning damage.
+		
+		Feng Calabra
+			- A young half-orc whos older brother is part of the gang, he notices the moral delema of this group but his asperation for his brother is what drives him to join the group.
+			- Str 18 (+4), Dex 12 (+1), Con 15 (+2), Int 8 (-1), Wis 10 (+0), Cha 8 (-1); AC 14; HP 32; Speed 30; Skills: Acrobatics +5 Deception +4; CR: 1
+			- Hammer. Melee Weapon Attack +6 to hit, reach 5 ft, one target. Hit: (1d6 +4 ) piercing damage.
+			
+	AT ELKMERE KEEP
+		
+		Zireal Revita
+			- Small half elvin 13 year old girl with a green eye on her left and a blue eye on her right. 
+			- Is hostile at first as she is used to the adults in here life mistreating her, espesially older men.
+			- Shes got platinum blode hair and a small scar on her chin. She never knew her parrents and was brought into the servents life here when she was a very small child. Shes in the prison cell for hiting one of the family members who tried to grop her at a dinner, she hit him so hard she broke his nose and as he fell back on his chair he broke his back and is now paralized.
+			- The men holding her tried to take advandtage of her before the dead began to rise. She fought them of successfully.
+			- Str 12 (+1), Dex 15 (+2), Con 14 (+2), Int 9 (-1), Wis 14 (+2), Cha 12 (+1); AC 13; HP 22; Speed 30; Skills: Acrobatics +4 Athletics +4 Survival +6 Medicine +3; 
+			- Gets advantage on all saving throws of any type.
+
+		Wen Elkmere
+			- The lord of the keep who is killed by his possest son in the thrown room when the heros come. He would be already to week to fight if he is saved by the hero's.
+			
+		Dorn Elkmere
+			- Son of Wen Elkmere, is currently possesed by a Val'kyr. He is about 7 years old and completly innocent.
+			- 9 (-1) on all skills; HP 7;
+			
+		Nulara Elkmere
+			- Wife and mother of the Elkmeres. Even though she know's here son has been possesed she will not let the heros kill her child. In the chambers she will attack the heros if anyone trys to kill her son.
+			- Str 12 (+1), Dex 11 (+0), Con 14 (+2), Int 15 (+2), Wis 17 (+3), Cha 17 (+3); AC 11; HP 13; Speed 30; Skills: Insight +5 Persuasion +5 Investigation +4 History +4; Saving Throws: Wisdom +5 Charisma +5;
+			
+		Naivara Amastacia
+			- A warlock summoned when Aoth disappeared from the family.
+			- She's quirky but powerful and very nice, especially to children.
+			- is really just posing as a wizard of Gendor. She's never been to Gendor.
+			- Everyone blames her as they find out shes a warlock so she locks herself in her room at the keep. Hidden from the undead herself.
+			
+		Evendur Tallstag
+			- The head of the guard at the keep was on patrol outside of the keep when he undead came. He was on patrol.
+			- Is set on rallying people to attack the keep at night when the gates lower.
+			- Str 14 (+2), Dex 10 (+0), Con 16 (+3), Int 9 (-1), Wis 14 (+2), Cha 12 (+1); AC 17; HP 37; Speed 30; Skills: Athletics +4; 
+			- Longsword: Melee Weapon Attack +4 to hit, reach 5 ft, one target. Hit: 6 (1d8 +2 ) slashing damage.
+			- Longbow: Ranged Weapon Attack +2 to hit, range 150/600, one target. Hit: 4 (1d8 +0 ) piercing damage.
+			
+		Jandar Pashar
+			- He is at the town outside and is worried about his daughter. He is a crippled and works as horse master in the town. His daughter is Zora and she is already a zombie attacking the other servents.
+			
+		Aoth Marivaldi
+			- The old castle mage.
+			- In love with Lidda and has be sneeking through the underground passage sealed with riddles so his real wife Dorra does not find out.
+			- He is shocked when Harbek tells him the truth but still loves Lidda and doesn't try to fight Harbek. Harbek rages when he admits him and attacks a breaks several bones with his hammer. He casts a lightning bolt and kills Harbek but he is unable to recover or move from his wounds so he to dies.
+			- He now annoys Harbek as his orginal magical barriers trapped them in this Lab. This probably shown very comedical to the PCs.
+			
+			
+		Harbek Torunn
+			- The old blacksmith. Extremely stubborn and wants people to leave him alone.
+			- Loves Lidda, and finds out that Aoth is also dating her and has been so longer then Harbek himself.
+			- His house has been abandoned as he went missing with the deed still in his name. Its in ruins.
+			- Is know forever stuck in Aoth's magical laboritory with Aoth, the worst part about his situation.
+		
+		Lidda Greenbottle
+			- At the time she used to be a beautiful apothicary's daughter. She was wanted by every man in town, even at a hight of about 3 feet.
+			- Is very intelligent and worldly.
+			- Is bisexual but nobody really knows that.
+			- Has a relationship with both Aoth and Harbek in secret. But is also falling in love with Breena "Ashhearth" Diergel. A female gnome paladin setout to do good in the world. Lidda writes a note telling both Aoth and Harbek that she is leaving with Breena. They never get the letter as they kill each other when she leaves the letter. 
+			- Aoths letter is in the mill tucked near the entrance. Harbrek's letter is slid under his door.
+			
+	EXTRA NAMES
+		
+		Human
+			Kosef Khalid
+			Frath Chernin
+			Mival Domine
+			Alethra Rein
+			Hulmarra Calabra
+			Betha Falone
+			
+		Dwarf
+			Travok Dankil 
+			Baern Strakeln
+			Gardain Lutgehr 
+			Gurdis Ironfist
+			Artin Strakeln 
+			Torbera Ironfist 
+			
+		Gnome
+			Fonkin "Badger" Garrick
+			Nyx "Badger" Folkor 
+			Alston "Cloak" Garrick
+			
+		Half Elf
+			Soveliss Ilphelkiir 
+			Keyleth Naïlo
+			Althaea Meliamne 
+			
+		Half Orc
+			Ovak
+			On Huang
+			Neega
+			
+		Tiefling
+			Criella Hornraven 
+			Blath Kao
+			Carrion Bau
+			
+		Dragonborn
+			Arjhan Clethtinthiallor
+			Donaar Shestendeliath
+			Surina Daardendrian
+			
+		Halfling
+			Reed Goodbarrel
+			Roscoe Underbough
+			Euphemia High-hil
+			
+			
+			
